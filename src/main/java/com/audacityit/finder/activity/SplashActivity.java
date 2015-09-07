@@ -29,7 +29,7 @@ public class SplashActivity extends AppCompatActivity {
         findViewById(R.id.btnSkip).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SplashActivity.this, TermsConditionActivity.class));
+                startActivity(new Intent(SplashActivity.this, TermsConditionActivity.class)) ;
             }
         });
 
