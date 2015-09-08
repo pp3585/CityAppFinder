@@ -80,7 +80,7 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:padding">@dimen/value_10dp</item>
         <item name="android:textColor">@drawable/clickable_text_bg_2</item>
-        <item name="android:textSize">@dimen/value_15sp</item>
+        <item name="android:textSize">@dimen/value_16sp</item>
     </style>
 
     <style name="btnFillSelection_greenStroke" parent="@android:style/Widget.TextView">
@@ -91,7 +91,7 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:padding">@dimen/value_10dp</item>
         <item name="android:textColor">@drawable/clickable_text_bg_2</item>
-        <item name="android:textSize">@dimen/value_15sp</item>
+        <item name="android:textSize">@dimen/value_16sp</item>
     </style>
 
     <style name="btnDeepSelection" parent="@android:style/Widget.TextView">
@@ -102,7 +102,7 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:padding">@dimen/value_10dp</item>
         <item name="android:textColor">@color/text_color_1</item>
-        <item name="android:textSize">@dimen/value_15sp</item>
+        <item name="android:textSize">@dimen/value_16sp</item>
     </style>
 
     <style name="rateNowButton" parent="@android:style/Widget.TextView">
