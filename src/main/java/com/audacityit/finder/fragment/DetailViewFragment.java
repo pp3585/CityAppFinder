@@ -48,6 +48,7 @@ import static com.audacityit.finder.util.Constants.JF_NAME;
 import static com.audacityit.finder.util.Constants.JF_RATING_ARRAY;
 import static com.audacityit.finder.util.Constants.JF_REVIEW;
 import static com.audacityit.finder.util.Constants.JF_USER_RATING;
+import static com.audacityit.finder.util.Constants.MSG_RATING_SUCCESSFUL;
 import static com.audacityit.finder.util.Constants.NO_DATA_FOUND;
 import static com.audacityit.finder.util.Constants.NULL_LOCATION;
 import static com.audacityit.finder.util.UtilMethods.browseUrl;
@@ -404,53 +405,24 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
     }
 
     private void getUserComment(EditText etComment, CustomRatingBar ratingBar) {
-        String jsonString = loadJSONFromAsset(getActivity(), "get_user_comments");
-        try {
-            JSONObject jsonObject = new JSONObject(jsonString);
-            JSONArray ratingArray = jsonObject.getJSONArray(JF_RATING_ARRAY);
-            commentList = new ArrayList<Comment>();
-            commentList.add(new Comment(getPreferenceString(getActivity(), JF_NAME),
-                    ratingBar.getScore(), etComment.getText().toString(), new Date().toString()));
-            for (int i = 0; i < ratingArray.length(); i++) {
+        Toast.makeText(getActivity(),MSG_RATING_SUCCESSFUL,Toast.LENGTH_SHORT).show();
+        Collections.reverse(commentList);
+        commentList.add(new Comment(getPreferenceString(getActivity(), JF_NAME),
+                ratingBar.getScore(), etComment.getText().toString(), new Date().toString()));
 
-                Comment comment = new Comment();
-                if (!ratingArray.getJSONObject(i).getString(JF_NAME).equals("null")) {
-                    comment.setUserName(ratingArray.getJSONObject(i).getString(JF_NAME));
-                }
-
-                try {
-                    comment.setRating(Float.parseFloat(ratingArray.getJSONObject(i).
-                            optString(JF_USER_RATING, NO_DATA_FOUND)));
-                } catch (NumberFormatException e) {
-                    comment.setRating(0.0f);
-                }
-
-                if (!ratingArray.getJSONObject(i).getString(JF_REVIEW).equals("null")) {
-                    comment.setText(ratingArray.getJSONObject(i).getString(JF_REVIEW));
-                }
-
-                comment.setDate(dateTimeFormatter(ratingArray.getJSONObject(i).
-                        getString(JF_DATE)));
-                commentList.add(comment);
-            }
-
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (commentList.size() > 0) {
-                        allRatingTV.setVisibility(View.VISIBLE);
-                        Collections.reverse(commentList);
-                        countRatingTV.setText(commentList.size() + " Rating(s)");
-                        addCommentsToView(commentList);
-                    } else {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (commentList.size() > 0) {
+                    allRatingTV.setVisibility(View.VISIBLE);
+                    Collections.reverse(commentList);
+                    countRatingTV.setText(commentList.size() + " Rating(s)");
+                    addCommentsToView(commentList);
+                } else {
 //                            allRatingTV.setVisibility(View.GONE);
-                    }
                 }
-            });
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            }
+        });
     }
 
     private String dateTimeFormatter(String serverDate) {
