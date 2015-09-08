@@ -92,8 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/value_20dp"
             style="@style/btnDeepSelection"
-            android:text="@string/sign_in_string"
-            android:textSize="@dimen/value_15sp" />
+            android:text="@string/sign_in_string"/>
 
 
         <RelativeLayout

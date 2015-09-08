@@ -28,8 +28,7 @@
         android:layout_marginLeft="@dimen/value_15dp"
         android:layout_marginRight="@dimen/value_15dp"
         style="@style/btnFillSelection_greenStroke"
-        android:text="@string/call_now_string"
-        android:textSize="@dimen/value_15sp" />
+        android:text="@string/call_now_string"/>
 
     <TextView
         android:id="@+id/btnPostBusiness"
@@ -40,8 +39,7 @@
         android:layout_marginRight="@dimen/value_15dp"
         android:layout_marginTop="@dimen/value_10dp"
         style="@style/btnDeepSelection"
-        android:text="@string/post_business_string"
-        android:textSize="@dimen/value_15sp" />
+        android:text="@string/post_business_string"/>
 
 
     <LinearLayout
@@ -75,8 +73,7 @@
                 android:layout_margin="@dimen/value_10dp"
                 android:layout_weight="1"
                 style="@style/btnFillSelection_greenStroke"
-                android:text="@string/sign_up_string"
-                android:textSize="@dimen/value_15sp" />
+                android:text="@string/sign_up_string"/>
 
             <TextView
                 android:id="@+id/btnSignIn"
@@ -85,8 +82,7 @@
                 android:layout_margin="@dimen/value_10dp"
                 android:layout_weight="1"
                 style="@style/btnDeepSelection"
-                android:text="@string/sign_in_string"
-                android:textSize="@dimen/value_15sp" />
+                android:text="@string/sign_in_string"/>
 
         </LinearLayout>
 

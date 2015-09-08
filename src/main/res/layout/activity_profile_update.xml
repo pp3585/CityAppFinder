@@ -73,8 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/btnDeepSelection"
-            android:text="@string/update_string"
-            android:textSize="@dimen/value_15sp" />
+            android:text="@string/update_string"/>
 
     </LinearLayout>
 

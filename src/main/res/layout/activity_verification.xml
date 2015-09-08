@@ -60,8 +60,7 @@
             android:layout_height="wrap_content"
             style="@style/btnDeepSelection"
             android:layout_marginBottom="@dimen/value_20dp"
-            android:text="@string/submit_string"
-            android:textSize="@dimen/value_15sp" />
+            android:text="@string/submit_string"/>
 
         <TextView
             android:id="@+id/btnResendCode"
