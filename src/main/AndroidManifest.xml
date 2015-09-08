@@ -41,7 +41,8 @@
             android:name=".activity.SignUpActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
-            android:theme="@style/FullScreen" />
+            android:theme="@style/FullScreen"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
             android:name=".activity.SignInActivity"

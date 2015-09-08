@@ -20,6 +20,7 @@
         android:background="@android:color/transparent"
         android:inputType="text|textAutoCorrect|textCapSentences|textAutoComplete"
         android:maxLength="200"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:imeOptions="actionNone"/>
 
 </merge>

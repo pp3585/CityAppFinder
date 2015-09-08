@@ -42,7 +42,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:padding="@dimen/value_20dp">
+        android:padding="@dimen/value_20dp"
+        android:layout_marginBottom="@dimen/value_10dp">
 
         <TextView
             android:id="@+id/btnSignUp"
