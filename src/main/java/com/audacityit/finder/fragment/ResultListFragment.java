@@ -229,16 +229,17 @@ public class ResultListFragment extends Fragment implements InternetConnectionLi
                     item.setDescription(itemObject.optString(JF_DESCRIPTION, NO_DATA_FOUND));
                     item.setVerification(itemObject.optString(JF_VERIFICATION, NO_DATA_FOUND).equals("1") ? true : false);
                     item.setDistrictTitle(companyObject.getJSONObject(JF_DISTRICT_INFO).getString(JF_DISTRICT_TITLE));
-                    if (companyObject.has(JF_ENTRY_TO_CATEGORY))
+                    if (companyObject.has(JF_ENTRY_TO_CATEGORY)) {
                         item.setCategoryId(companyObject.optJSONObject(JF_ENTRY_TO_CATEGORY).optString(JF_CATEGORY_ID));
+                    }
 
                     JSONArray imageArray = companyObject.getJSONArray(JF_IMAGES);
                     String[] imageThumb = new String[imageArray.length()];
                     String[] imageLarge = new String[imageArray.length()];
 
                     for (int j = 0; j < imageArray.length(); j++) {
-                        imageThumb[j] = imageThumbPath + imageArray.getJSONObject(j).getString(JF_TITLE);
-                        imageLarge[j] = imageLargePath + imageArray.getJSONObject(j).getString(JF_TITLE);
+                        imageThumb[j] = imageArray.getJSONObject(j).getString(JF_TITLE);
+                        imageLarge[j] = imageArray.getJSONObject(j).getString(JF_TITLE);
                     }
 
                     item.setImageThumbUrls(imageThumb);
@@ -268,6 +269,9 @@ public class ResultListFragment extends Fragment implements InternetConnectionLi
                     @Override
                     public void run() {
                         if (searchResultList != null && searchResultList.size() > 0) {
+                            searchResultList.addAll(searchResultList.size(),searchResultList);
+                            searchResultList.addAll(searchResultList.size(),searchResultList);
+                            searchResultList.addAll(searchResultList.size(),searchResultList);
                             resultListView.setAdapter(new ResultListAdapter(getActivity(), mCallbacks, searchResultList));
                         } else {
                             Toast.makeText(getActivity(), getResources().getString(R.string.no_value), Toast.LENGTH_SHORT).show();

@@ -27,7 +27,6 @@ import static com.audacityit.finder.util.Constants.JF_COLOR_CODE;
 import static com.audacityit.finder.util.Constants.JF_ICON;
 import static com.audacityit.finder.util.Constants.JF_ID;
 import static com.audacityit.finder.util.Constants.JF_TITLE;
-import static com.audacityit.finder.util.Constants.JF_WEIGHT;
 import static com.audacityit.finder.util.UtilMethods.loadJSONFromAsset;
 import static com.audacityit.finder.util.UtilMethods.showNoInternetDialog;
 
@@ -102,7 +101,6 @@ public class HomeFragment extends Fragment implements InternetConnectionListener
                 Category category = new Category();
                 category.setId(jsonArray.getJSONObject(i).getString(JF_ID));
                 category.setTitle(jsonArray.getJSONObject(i).getString(JF_TITLE));
-                category.setWeight(jsonArray.getJSONObject(i).getInt(JF_WEIGHT));
                 category.setColorCodeRGB(jsonArray.getJSONObject(i).getString(JF_COLOR_CODE));
                 category.setIconUrl(jsonArray.getJSONObject(i).getString(JF_ICON));
 

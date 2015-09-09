@@ -13,12 +13,12 @@
         android:padding="@dimen/value_20dp"
         android:text="@string/welcome_string"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/value_20dp" />
+        android:textSize="@dimen/value_25sp" />
 
     <ImageView
         android:id="@+id/logoImgView"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/welcomeTV"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_logo_promo" />
@@ -50,7 +50,8 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/value_20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -84,7 +85,8 @@
                 android:text="@string/tc_accept"
                 android:textColor="@android:color/black"
                 android:padding="@dimen/value_10dp"
-                android:textSize="@dimen/value_18sp" />
+                android:textSize="@dimen/value_18sp"
+                android:layout_marginBottom="@dimen/value_20dp"/>
 
             <CheckBox
                 android:id="@+id/checkBoxAccept"
@@ -100,12 +102,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tcTV"
-                android:background="@drawable/btn_inactive"
+                android:background="@drawable/btn_bg_deep_selection_idle"
                 android:enabled="false"
                 android:gravity="center"
                 android:padding="@dimen/value_10dp"
                 android:text="@string/continue_string"
-                android:textColor="@drawable/text_color_1"
+                android:textColor="@android:color/white"
                 android:textSize="@dimen/value_16sp" />
 
         </RelativeLayout>

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.audacityit.finder.R;
 import com.audacityit.finder.fragment.HomeFragment;
 import com.audacityit.finder.model.Category;
+import com.audacityit.finder.util.UtilMethods;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -50,21 +51,15 @@ public class CategoryAdapter extends ArrayAdapter<Category> implements View.OnCl
         }
 
         Category category = categoryList.get(position);
-        Picasso.with(activity).load(category.getIconUrl()).tag(category.getIconUrl()).
+        Picasso.with(activity).load(UtilMethods.getDrawableFromFileName(activity,category.getIconUrl())).tag(category.getIconUrl()).
                 into(row.categoryImage);
         row.categoryName.setText(category.getTitle());
 
-        if (position % 2 == 0) {
-            Picasso.with(activity).load(dummyUrl).placeholder(R.drawable.img_category_mobile)
-                    .tag(category.getIconUrl())
-                    .fit()
-                    .into(row.bannerImage);
-        } else {
-            Picasso.with(activity).load(dummyUrl).placeholder(R.drawable.img_category_industry)
-                    .tag(category.getIconUrl())
-                    .fit()
-                    .into(row.bannerImage);
-        }
+        Picasso.with(activity).load(UtilMethods.getDrawableFromFileName(activity,category.getImageUrl())).placeholder(R.drawable.img_category_mobile)
+                .tag(category.getIconUrl())
+                .fit()
+                .into(row.bannerImage);
+
 
         row.bannerImage.setOnClickListener(this);
         row.categoryImage.setTag(position);

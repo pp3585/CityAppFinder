@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import static com.audacityit.finder.util.Constants.APB_HOTLINE;
+import static com.audacityit.finder.util.Constants.FINDER_HOTLINE;
 import static com.audacityit.finder.util.Constants.JF_CONTACT_NUMBER;
 import static com.audacityit.finder.util.Constants.JF_EMAIL;
 import static com.audacityit.finder.util.Constants.JF_ID;
@@ -45,6 +45,8 @@ import static com.audacityit.finder.util.Constants.JF_NAME;
 
 public class UtilMethods {
 
+    private static final boolean APP_TEST_MODE = true;
+
     private static AlertDialog dialog = null;
 
     public static String getPackageName(Context context) {
@@ -52,6 +54,9 @@ public class UtilMethods {
     }
 
     public static boolean isConnectedToInternet(Context context) {
+        if(APP_TEST_MODE) {
+            return true;
+        }
         ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivity != null) {
             NetworkInfo[] info = connectivity.getAllNetworkInfo();
@@ -250,7 +255,7 @@ public class UtilMethods {
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setPositiveButton(positiveString, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        phoneCall(context, APB_HOTLINE);
+                        phoneCall(context, FINDER_HOTLINE);
 
                     }
                 })
@@ -327,6 +332,10 @@ public class UtilMethods {
             return null;
         }
         return json;
+    }
+
+    public static String getDrawableFromFileName(Context context, String imageName) {
+        return Uri.parse("android.resource://" + context.getPackageName() + "/drawable/"+imageName).toString();
     }
 
 

@@ -150,14 +150,14 @@ public class Constants {
     public static final String NO_IMAGE_FOUND = "no_image_found";
 
     //social page url
-    public static final String URL_FACEBOOK = "https://www.facebook.com/amar.phonebook.ltd";
-    public static final String URL_TWITTER = "https://twitter.com/amarphonebook";
-    public static final String URL_GOOGLE_PLUS = "https://plus.google.com/110399599676116487794/posts";
-    public static final String URL_YOUTUBE = "https://www.youtube.com/channel/UCqxb7rDE8sdmtW0xrzU0hTg";
-    public static final String URL_LINKEDIN = "https://www.linkedin.com/company/amar-phonebook";
+    public static final String URL_FACEBOOK = "https://www.facebook.com/audacityit";
+    public static final String URL_TWITTER = "https://www.facebook.com/audacityit";
+    public static final String URL_GOOGLE_PLUS = "https://www.facebook.com/audacityit";
+    public static final String URL_YOUTUBE = "https://www.facebook.com/audacityit";
+    public static final String URL_LINKEDIN = "https://www.facebook.com/audacityit";
 
     public static final String INTENT_EXTRA = "extra";
-    public static final String APB_HOTLINE = "09612-555-555";
+    public static final String FINDER_HOTLINE = "+8801670923581";
     public static final int MAX_EMS = 10;
 
     //check flag
@@ -168,5 +168,8 @@ public class Constants {
     //others
     public static int ITEM_TYPE_COMPANY = 0;
     public static int ITEM_TYPE_AD = 1;
+
+    public static final double DUMMY_LOCATION_LATITUDE = 23.7967599;
+    public static final double DUMMY_LOCATION_LONGITUDE = 90.4261766;
 
 }

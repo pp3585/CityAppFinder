@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.audacityit.finder.R;
+import com.audacityit.finder.util.Constants;
 import com.audacityit.finder.util.PathJSONParser;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -64,7 +65,8 @@ public class MapActivity extends FragmentActivity implements
         setContentView(R.layout.activity_map);
         ((TextView) findViewById(R.id.itemHeadingTV)).setText(itemDetails.getTitle());
         if (itemDetails != null) {
-            itemLocation = new LatLng(itemDetails.getLongitude(), itemDetails.getLatitude());
+            itemLocation = new LatLng(Constants.DUMMY_LOCATION_LATITUDE,
+                    Constants.DUMMY_LOCATION_LONGITUDE);
         }
 
         if (!isGooglePlayServicesAvailable()) {

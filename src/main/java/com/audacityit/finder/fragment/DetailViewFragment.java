@@ -135,8 +135,10 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
 
                     if (imagePager.getAdapter().getCount() > 1) {
                         if (position == 0) {
+                            nextImgView.setVisibility(View.VISIBLE);
                             prevImgView.setVisibility(View.INVISIBLE);
                         } else if (position == imagePager.getAdapter().getCount() - 1) {
+                            prevImgView.setVisibility(View.VISIBLE);
                             nextImgView.setVisibility(View.INVISIBLE);
                         } else {
                             prevImgView.setVisibility(View.VISIBLE);

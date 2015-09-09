@@ -111,6 +111,8 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
                     public void onClick(DialogInterface dialog, int which) {
                         doRequestForPassword();
                         dialog.dismiss();
+                        isUserCanceled = true;
+                        onPause();
                     }
                 })
                 .setView(view)

@@ -29,9 +29,10 @@ public class TermsConditionActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    btnContinue.setBackgroundResource(R.drawable.btn_bg_1);
+                    btnContinue.setBackgroundResource(R.drawable.btn_bg_deep_selection);
+                    btnContinue.setTextAppearance(TermsConditionActivity.this,R.style.btnDeepSelection);
                 } else {
-                    btnContinue.setBackgroundResource(R.drawable.btn_inactive);
+                    btnContinue.setBackgroundResource(R.drawable.btn_bg_deep_selection_idle);
                 }
 
                 btnContinue.setEnabled(isChecked);

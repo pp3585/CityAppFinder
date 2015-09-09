@@ -7,9 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.audacityit.finder.R;
 import com.squareup.picasso.Picasso;
+import static com.audacityit.finder.util.UtilMethods.getDrawableFromFileName;
 
 /**
  * Created by tusharaits on 7/2/15.
@@ -22,10 +22,12 @@ public class ImagePagerAdapter extends PagerAdapter {
 
     public ImagePagerAdapter(Context context, String[] imageUrls) {
         this.mContext = context;
-        if (imageUrls != null && imageUrls.length == 0)
+        if (imageUrls != null && imageUrls.length == 0) {
             this.imageUrls = new String[]{getDefaultImage(mContext)};
-        else
+        }
+        else {
             this.imageUrls = imageUrls;
+        }
         inflater = LayoutInflater.from(context);
     }
 
@@ -37,7 +39,10 @@ public class ImagePagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         View itemView = inflater.inflate(R.layout.layout_detail_image, container, false);
         ImageView imageView = (ImageView) itemView.findViewById(R.id.image);
-        Picasso.with(mContext).load(imageUrls[position]).placeholder(R.drawable.ic_placeholder).into(imageView);
+        // load real image using the url coming from server
+//        Picasso.with(mContext).load(imageUrls[position]).placeholder(R.drawable.ic_placeholder).into(imageView);
+        Picasso.with(mContext).load(getDrawableFromFileName(mContext, imageUrls[position])).
+                placeholder(R.drawable.ic_placeholder).into(imageView);
         container.addView(itemView);
         return itemView;
     }

@@ -29,6 +29,7 @@ import com.audacityit.finder.activity.SignInActivity;
 import com.audacityit.finder.activity.SignUpActivity;
 import com.audacityit.finder.adapter.NavigationAdapter;
 
+import static com.audacityit.finder.util.Constants.FINDER_HOTLINE;
 import static com.audacityit.finder.util.Constants.URL_FACEBOOK;
 import static com.audacityit.finder.util.Constants.URL_GOOGLE_PLUS;
 import static com.audacityit.finder.util.Constants.URL_LINKEDIN;
@@ -37,6 +38,7 @@ import static com.audacityit.finder.util.Constants.URL_YOUTUBE;
 import static com.audacityit.finder.util.Constants.isResultListFragmentOpened;
 import static com.audacityit.finder.util.UtilMethods.browseUrl;
 import static com.audacityit.finder.util.UtilMethods.isUserSignedIn;
+import static com.audacityit.finder.util.UtilMethods.phoneCall;
 import static com.audacityit.finder.util.UtilMethods.showExitDialog;
 
 
@@ -114,6 +116,7 @@ public class NavigationDrawerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 closeDrawer();
+                phoneCall(getActivity(), FINDER_HOTLINE);
             }
         });
 
