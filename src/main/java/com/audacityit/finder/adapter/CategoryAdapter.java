@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class CategoryAdapter extends ArrayAdapter<Category> implements View.OnCl
     private Activity activity;
     private HomeFragment.CategorySelectionCallbacks mCallbacks;
     private String dummyUrl = "http://www.howiwork.org";
+    AbsListView.LayoutParams params;
 
 
     public CategoryAdapter(Activity activity, HomeFragment.CategorySelectionCallbacks mCallbacks, ArrayList<Category> categoryList) {
@@ -50,6 +52,10 @@ public class CategoryAdapter extends ArrayAdapter<Category> implements View.OnCl
             row = (ViewHolder) convertView.getTag();
         }
 
+        params = (AbsListView.LayoutParams) convertView.getLayoutParams();
+        if(params!=null) {
+            params.height = UtilMethods.getWindowSize(activity).y / 3;
+        }
         Category category = categoryList.get(position);
         Picasso.with(activity).load(UtilMethods
                 .getDrawableFromFileName(activity,category.getIconUrl()))

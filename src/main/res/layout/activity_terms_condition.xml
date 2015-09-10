@@ -27,7 +27,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/logoImgView"
-        android:layout_marginBottom="@dimen/value_10dp"
         android:orientation="vertical"
         android:padding="@dimen/value_10dp"
         android:weightSum="4">
@@ -38,6 +37,7 @@
             android:layout_height="0dp"
             android:layout_weight="3"
             android:orientation="vertical"
+            android:layout_gravity="center_vertical"
             android:padding="@dimen/value_10dp">
 
             <TextView
@@ -74,7 +74,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_gravity="bottom">
 
             <TextView
                 android:id="@+id/tcTV"
@@ -86,7 +87,8 @@
                 android:textColor="@android:color/black"
                 android:padding="@dimen/value_10dp"
                 android:textSize="@dimen/value_18sp"
-                android:layout_marginBottom="@dimen/value_20dp"/>
+                android:layout_above="@+id/btnContinue"
+                android:layout_marginBottom="@dimen/value_10dp"/>
 
             <CheckBox
                 android:id="@+id/checkBoxAccept"
@@ -101,14 +103,15 @@
                 android:id="@+id/btnContinue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tcTV"
                 android:background="@drawable/btn_bg_deep_selection_idle"
                 android:enabled="false"
                 android:gravity="center"
                 android:padding="@dimen/value_10dp"
                 android:text="@string/continue_string"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/value_16sp" />
+                android:textSize="@dimen/value_16sp"
+                android:layout_marginBottom="@dimen/value_5dp"
+                android:layout_alignParentBottom="true"/>
 
         </RelativeLayout>
 
