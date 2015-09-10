@@ -25,9 +25,9 @@ import com.audacityit.finder.R;
 public class CustomRatingBar extends LinearLayout {
     private int mMaxStars = 5;
     private float mCurrentScore = 0.0f;
-    private int mStarOnResource = R.drawable.star_3;
-    private int mStarOffResource = R.drawable.star_2;
-    private int mStarHalfResource = R.drawable.star_1;
+    private int mStarOnResource = R.drawable.ic_full_star;
+    private int mStarOffResource = R.drawable.ic_empty_star;
+    private int mStarHalfResource = R.drawable.ic_half_star;
     private ImageView[] mStarsViews;
     private float mStarPadding;
     private float mStarPaddingLeft;

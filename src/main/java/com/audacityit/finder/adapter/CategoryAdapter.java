@@ -51,11 +51,15 @@ public class CategoryAdapter extends ArrayAdapter<Category> implements View.OnCl
         }
 
         Category category = categoryList.get(position);
-        Picasso.with(activity).load(UtilMethods.getDrawableFromFileName(activity,category.getIconUrl())).tag(category.getIconUrl()).
-                into(row.categoryImage);
+        Picasso.with(activity).load(UtilMethods
+                .getDrawableFromFileName(activity,category.getIconUrl()))
+                .tag(category.getIconUrl())
+                .into(row.categoryImage);
         row.categoryName.setText(category.getTitle());
 
-        Picasso.with(activity).load(UtilMethods.getDrawableFromFileName(activity,category.getImageUrl())).placeholder(R.drawable.img_category_mobile)
+        Picasso.with(activity)
+                .load(UtilMethods.getDrawableFromFileName(activity,category.getImageUrl()))
+                .placeholder(R.drawable.img_banner_placeholder)
                 .tag(category.getIconUrl())
                 .fit()
                 .into(row.bannerImage);
