@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static com.audacityit.finder.util.Constants.ITEM_TYPE_COMPANY;
 import static com.audacityit.finder.util.Constants.JF_AREA;
@@ -173,7 +174,12 @@ public class ResultListFragment extends Fragment implements InternetConnectionLi
     @Override
     public void onLocationChange() {
         if (UtilMethods.isConnectedToInternet(getActivity())) {
-            getSearchResults(searchTerm);
+            getSearchResults(searchTerm);// call for live use
+            //calling for demo updates
+            Collections.shuffle(searchResultList);
+            ((ResultListAdapter)resultListView.getAdapter()).notifyDataSetChanged();
+            //
+
         } else {
             internetConnectionListener = (InternetConnectionListener) ResultListFragment.this;
             showNoInternetDialog(getActivity(), internetConnectionListener, getResources().getString(R.string.no_internet),
