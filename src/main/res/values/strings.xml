@@ -95,7 +95,7 @@
     <string name="no_rating_error_string">You\'ve to rate first!</string>
     <string name="hotline_call_text">Are you sure you want to call Finder Hot Line \'+8801670923581\' ?</string>
     <string name="hotline_call_heading">Hotline</string>
-    <string name="google_map_v2_key">AIzaSyBzbBe11wVnb9mW2AZkl3FFKSbEi_PC5tk</string>
+    <string name="google_map_v2_key">AIzaSyDofe3hEZeyAi8w9-XgEsNvF0l4JWjimu8</string>
     <string name="no_call_feature">Sorry! Your device does not support calling feature!</string>
     <string name="title_activity_home">Home</string>
     <string name="post_business_successful">Business created successfully</string>

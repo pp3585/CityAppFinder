@@ -46,6 +46,7 @@ import static com.audacityit.finder.util.Constants.JF_NAME;
 public class UtilMethods {
 
     private static final boolean APP_TEST_MODE = true;
+    public static boolean APP_MAP_MODE = false;
 
     private static AlertDialog dialog = null;
 
@@ -54,7 +55,7 @@ public class UtilMethods {
     }
 
     public static boolean isConnectedToInternet(Context context) {
-        if(APP_TEST_MODE) {
+        if(APP_TEST_MODE && !APP_MAP_MODE) {
             return true;
         }
         ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

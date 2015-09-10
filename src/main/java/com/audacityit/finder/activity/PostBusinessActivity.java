@@ -180,6 +180,9 @@ public class PostBusinessActivity extends Activity implements View.OnClickListen
 
     private void initPostBusinessRequest() {
         Toast.makeText(this, getResources().getString(R.string.post_business_successful), Toast.LENGTH_SHORT).show();
+        hideSoftKeyboard(this);
+        isUserCanceled = true;
+        onPause();
     }
 
     private boolean inputValid() {

@@ -51,6 +51,7 @@ import static com.audacityit.finder.util.Constants.JF_USER_RATING;
 import static com.audacityit.finder.util.Constants.MSG_RATING_SUCCESSFUL;
 import static com.audacityit.finder.util.Constants.NO_DATA_FOUND;
 import static com.audacityit.finder.util.Constants.NULL_LOCATION;
+import static com.audacityit.finder.util.UtilMethods.APP_MAP_MODE;
 import static com.audacityit.finder.util.UtilMethods.browseUrl;
 import static com.audacityit.finder.util.UtilMethods.getPreferenceString;
 import static com.audacityit.finder.util.UtilMethods.isConnectedToInternet;
@@ -288,6 +289,7 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
 
     private void showMap() {
         if (itemDetails.getLatitude() != NULL_LOCATION && itemDetails.getLongitude() != NULL_LOCATION) {
+            APP_MAP_MODE = true;
             if (isConnectedToInternet(getActivity())) {
                 if (isGooglePlayServicesAvailable()) {
                     if (isGpsEnable(getActivity())) {
@@ -407,10 +409,11 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
     }
 
     private void getUserComment(EditText etComment, CustomRatingBar ratingBar) {
-        Toast.makeText(getActivity(),MSG_RATING_SUCCESSFUL,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), MSG_RATING_SUCCESSFUL, Toast.LENGTH_SHORT).show();
         Collections.reverse(commentList);
         commentList.add(new Comment(getPreferenceString(getActivity(), JF_NAME),
-                ratingBar.getScore(), etComment.getText().toString(), new Date().toString()));
+                ratingBar.getScore(), etComment.getText().toString(),
+                appViewFormat.format(new Date())));
 
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -443,6 +446,7 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
             browseUrl(getActivity(), itemDetails.getWebUrl());
         }
         if (code == MAP_ACTION) {
+            APP_MAP_MODE = false;
             startActivity(new Intent(getActivity(), MapActivity.class));
         } else if (code == RATE_NOW_ACTION) {
             showRatingDialog(getActivity(), itemDetails.getTitle(),
@@ -455,6 +459,9 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
     public void onUserCanceled(int code) {
         if (code == RATE_NOW_ACTION) {
 
+        }
+        if (code == MAP_ACTION) {
+            APP_MAP_MODE = false;
         }
     }
 
