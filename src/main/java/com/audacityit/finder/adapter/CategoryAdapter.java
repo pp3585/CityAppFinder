@@ -47,15 +47,19 @@ public class CategoryAdapter extends ArrayAdapter<Category> implements View.OnCl
             row.bannerImage = (ImageView) convertView.findViewById(R.id.catBannerImageView);
             row.categoryImage = (ImageView) convertView.findViewById(R.id.catImageView);
             row.categoryName = (TextView) convertView.findViewById(R.id.catNameTV);
+//            params = (AbsListView.LayoutParams) convertView.getLayoutParams();
+//            if(params!=null) {
+//                params.height = UtilMethods.getWindowSize(activity).y / 3;
+//            }
             convertView.setTag(row);
         } else {
             row = (ViewHolder) convertView.getTag();
+//            params = (AbsListView.LayoutParams) convertView.getLayoutParams();
+//            if(params!=null) {
+//                params.height = UtilMethods.getWindowSize(activity).y / 3;
+//            }
         }
 
-        params = (AbsListView.LayoutParams) convertView.getLayoutParams();
-        if(params!=null) {
-            params.height = UtilMethods.getWindowSize(activity).y / 3;
-        }
         Category category = categoryList.get(position);
         Picasso.with(activity).load(UtilMethods
                 .getDrawableFromFileName(activity,category.getIconUrl()))
