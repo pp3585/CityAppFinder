@@ -14,7 +14,9 @@ import com.audacityit.finder.model.Category;
 import java.util.ArrayList;
 
 /**
- * Created by tusharaits on 6/24/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class SubCategoryAdapter
+ * @brief Adapter class for populating sub-category in list view
  */
 
 public class SubCategoryAdapter extends ArrayAdapter<Category> implements View.OnClickListener {

@@ -11,6 +11,7 @@ import android.widget.ListView;
 import com.audacityit.finder.R;
 import com.audacityit.finder.adapter.SubCategoryAdapter;
 import com.audacityit.finder.model.Category;
+import com.audacityit.finder.util.ApiHandler;
 import com.audacityit.finder.util.UtilMethods;
 import com.audacityit.finder.util.UtilMethods.InternetConnectionListener;
 
@@ -29,10 +30,12 @@ import static com.audacityit.finder.util.UtilMethods.loadJSONFromAsset;
 import static com.audacityit.finder.util.UtilMethods.showNoInternetDialog;
 
 /**
- * Created by tusharaits on 6/28/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class HomeFragment
+ * @brief Fragment for showing the sub-category list
  */
 
-public class SubCategoryFragment extends Fragment implements InternetConnectionListener {
+public class SubCategoryFragment extends Fragment implements InternetConnectionListener, ApiHandler.ApiHandlerListener {
 
     public static String catId;
     private final int SUB_CATEGORY_ACTION = 1;
@@ -86,6 +89,19 @@ public class SubCategoryFragment extends Fragment implements InternetConnectionL
     }
 
     private void initSubCategoryList() {
+
+        /**
+         * json is populating from text file. To make api call use ApiHandler class
+         *
+         *   <CODE> ContentValues values = new ContentValues(); </CODE> <BR> 
+         *   <CODE> values.put(KEY_CATEGORY_ID, catId); </CODE> <BR>
+         *   <CODE> ApiHandler apiHandler = new ApiHandler(this, URL_GET_SUB_CATEGORY, values); </CODE> <BR>
+         *   <CODE> apiHandler.doApiRequest(ApiHandler.REQUEST_POST); </CODE> <BR>
+         *
+         * You will get the response in onSuccessResponse(String tag, String jsonString) method
+         * if successful api call has done.
+         */
+
         String jsonString = loadJSONFromAsset(getActivity(), "get_sub_category_list");
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
@@ -124,7 +140,19 @@ public class SubCategoryFragment extends Fragment implements InternetConnectionL
         }
     }
 
+    //! catch json response from here
+    @Override
+    public void onSuccessResponse(String tag, String jsonString) {
+        //! do same parsing as done in initSubCategoryList()
+    }
 
+    //! detect response error here
+    @Override
+    public void onFailureResponse(String tag) {
+
+    }
+
+    //! callback interface listen by HomeActivity to detect user click on sub-category
     public static interface SubCategorySelectionCallbacks {
         void onSubCategorySelected(String subCatID, String title);
     }

@@ -41,6 +41,11 @@ import static com.audacityit.finder.util.UtilMethods.isUserSignedIn;
 import static com.audacityit.finder.util.UtilMethods.phoneCall;
 import static com.audacityit.finder.util.UtilMethods.showExitDialog;
 
+/**
+ * @author Audacity IT Solutions Ltd.
+ * @class NavigationDrawerFragment
+ * @brief Fragment for showing left drawer with dynamic options based on sign up/ sing in or log out state
+ */
 
 public class NavigationDrawerFragment extends Fragment {
 
@@ -100,6 +105,10 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
 
+        /**
+         * if user is not logged in signInSignUpView will be visible
+         * to modify the layout go to res > layout > fragment_navigation_drawer
+         */
         if (!isUserSignedIn(getActivity()))
             rootView.findViewById(R.id.signInSignUpView).setVisibility(View.VISIBLE);
 
@@ -246,11 +255,10 @@ public class NavigationDrawerFragment extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
         mDrawerToggle = new ActionBarDrawerToggle(
-                getActivity(),                    /* host Activity */
-                mDrawerLayout,                    /* DrawerLayout object */
-//                        R.drawable.menu,             /* nav drawer image to replace 'Up' caret */
-                R.string.navigation_drawer_open,  /* "open drawer" description for accessibility */
-                R.string.navigation_drawer_close  /* "close drawer" description for accessibility */
+                getActivity(),
+                mDrawerLayout,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
 
         ) {
             @Override
@@ -260,7 +268,7 @@ public class NavigationDrawerFragment extends Fragment {
                     return;
                 }
 
-                getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+                getActivity().supportInvalidateOptionsMenu();
             }
 
             @Override
@@ -271,25 +279,19 @@ public class NavigationDrawerFragment extends Fragment {
                 }
 
                 if (!mUserLearnedDrawer) {
-                    // The user manually opened the drawer; store this flag to prevent auto-showing
-                    // the navigation drawer automatically in the future.
                     mUserLearnedDrawer = true;
                     SharedPreferences sp = PreferenceManager
                             .getDefaultSharedPreferences(getActivity());
                     sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
                 }
-
-                getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+                getActivity().supportInvalidateOptionsMenu();
             }
         };
 
-        // If the user hasn't 'learned' about the drawer, open it to introduce them to the drawer,
-        // per the navigation drawer design guidelines.
         if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
             mDrawerLayout.openDrawer(mFragmentContainerView);
         }
 
-        // Defer code dependent on restoration of previous instance state.
         mDrawerLayout.post(new Runnable() {
             @Override
             public void run() {
@@ -369,7 +371,7 @@ public class NavigationDrawerFragment extends Fragment {
         return ((AppCompatActivity) getActivity()).getSupportActionBar();
     }
 
-
+    //! interface for listening navigation list item click
     public interface NavigationDrawerCallbacks {
         void onNavigationDrawerItemSelected(int position);
     }

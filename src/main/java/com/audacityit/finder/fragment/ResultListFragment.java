@@ -70,10 +70,13 @@ import static com.audacityit.finder.util.UtilMethods.showNoInternetDialog;
 
 
 /**
- * Created by tusharaits on 6/28/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class ResultListFragment
+ * @brief Fragment for showing the business list
  */
 
-public class ResultListFragment extends Fragment implements InternetConnectionListener, LocationChangeListener {
+public class ResultListFragment extends Fragment implements InternetConnectionListener,
+        LocationChangeListener {
 
     public static String catId;
     public static String searchTerm;
@@ -145,11 +148,35 @@ public class ResultListFragment extends Fragment implements InternetConnectionLi
     }
 
     private void initResultList() {
+
+        /**
+         * json is populating from text file. To make api call use ApiHandler class
+         * pass parameter using ContentValues (values)
+         *
+         * <CODE> ApiHandler handler = new ApiHandler(this, URL_GET_RESULT_LIST_WITH_AD, values);</CODE> <BR>
+         * <CODE> handler.doApiRequest(ApiHandler.REQUEST_POST);</CODE> <BR>
+         *
+         * You will get the response in onSuccessResponse(String tag, String jsonString) method
+         * if successful api call has done.
+         */
+
         String jsonString = loadJSONFromAsset(getActivity(), "get_result_list");
         parseJson(jsonString);
     }
 
     private void getSearchResults(String query) {
+
+        /**
+         * json is populating from text file. To make api call use ApiHandler class
+         * pass parameter using ContentValues (values)
+         *
+         * <CODE> ApiHandler handler = new ApiHandler(this, URL_GET_SEARCH_LIST_AD, values);</CODE> <BR>
+         * <CODE> handler.doApiRequest(ApiHandler.REQUEST_POST);</CODE> <BR>
+         *
+         * You will get the response in onSuccessResponse(String tag, String jsonString) method
+         * if successful api call has done.
+         */
+
         String jsonString = loadJSONFromAsset(getActivity(), "get_search_list");
         parseJson(jsonString);
     }
@@ -171,14 +198,14 @@ public class ResultListFragment extends Fragment implements InternetConnectionLi
         }
     }
 
+    //! detect the location change by user from search filter on actionbar
     @Override
     public void onLocationChange() {
         if (UtilMethods.isConnectedToInternet(getActivity())) {
             getSearchResults(searchTerm);// call for live use
-            //calling for demo updates
+            //!calling for demo updates
             Collections.shuffle(searchResultList);
-            ((ResultListAdapter)resultListView.getAdapter()).notifyDataSetChanged();
-            //
+            ((ResultListAdapter) resultListView.getAdapter()).notifyDataSetChanged();
 
         } else {
             internetConnectionListener = (InternetConnectionListener) ResultListFragment.this;
@@ -275,9 +302,9 @@ public class ResultListFragment extends Fragment implements InternetConnectionLi
                     @Override
                     public void run() {
                         if (searchResultList != null && searchResultList.size() > 0) {
-                            searchResultList.addAll(searchResultList.size(),searchResultList);
-                            searchResultList.addAll(searchResultList.size(),searchResultList);
-                            searchResultList.addAll(searchResultList.size(),searchResultList);
+                            searchResultList.addAll(searchResultList.size(), searchResultList);
+                            searchResultList.addAll(searchResultList.size(), searchResultList);
+                            searchResultList.addAll(searchResultList.size(), searchResultList);
                             resultListView.setAdapter(new ResultListAdapter(getActivity(), mCallbacks, searchResultList));
                         } else {
                             Toast.makeText(getActivity(), getResources().getString(R.string.no_value), Toast.LENGTH_SHORT).show();
@@ -298,6 +325,7 @@ public class ResultListFragment extends Fragment implements InternetConnectionLi
         }
     }
 
+    // callback interface listen by HomeActivity to detect user click on business
     public interface ResultListCallbacks {
         void onResultItemSelected(Item itemDetails);
     }

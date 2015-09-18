@@ -34,8 +34,11 @@ import static com.audacityit.finder.util.UtilMethods.savePreference;
 import static com.audacityit.finder.util.Validator.isInputted;
 
 /**
- * Created by tusharaits on 7/7/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class VerificationActivity
+ * @brief Activity for making user verified via sending code to the user mobile number
  */
+
 public class VerificationActivity extends Activity implements View.OnClickListener,
         UtilMethods.InternetConnectionListener {
 

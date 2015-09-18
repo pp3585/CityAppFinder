@@ -18,8 +18,11 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by tusharaits on 9/4/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class CategoryAdapter
+ * @brief Adapter class for populating category in list view
  */
+
 public class CategoryAdapter extends ArrayAdapter<Category> implements View.OnClickListener {
 
     private final LayoutInflater inflater;

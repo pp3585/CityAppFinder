@@ -26,7 +26,9 @@ import static com.audacityit.finder.util.Validator.isValidEmail;
 import static com.audacityit.finder.util.Validator.setPhoneCodeListener;
 
 /**
- * Created by tusharaits on 6/25/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class ProfileUpdateActivity
+ * @brief Activity of updating user information
  */
 public class ProfileUpdateActivity extends Activity implements View.OnClickListener, InternetConnectionListener {
 

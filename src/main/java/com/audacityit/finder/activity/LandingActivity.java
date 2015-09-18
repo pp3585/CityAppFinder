@@ -8,7 +8,9 @@ import android.view.View;
 import com.audacityit.finder.R;
 
 /**
- * Created by tusharaits on 9/1/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class LandingActivity
+ * @brief Activity for showing Sign up, Sign In and See first option
  */
 public class LandingActivity extends AppCompatActivity implements View.OnClickListener,
         VerificationActivity.SignUpCompleteListener, SignInActivity.SignInCompleteListener {

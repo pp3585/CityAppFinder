@@ -1,20 +1,19 @@
 package com.audacityit.finder.util;
 
 /**
- * Created by tusharaits on 6/24/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class Constants
+ * @brief App constant values described here
  */
 
 public class Constants {
 
     //api url
-    public static final String URL_APB_API = "http://www.amarphonebook.com/api/";
+    public static final String URL_APB_API = "http://www.audacityit.com/api/...";
     public static final String URL_GET_CATEGORY = "getCategoryIDList";
-    //    public static final String URL_GET_SUB_CATEGORY = "getSubcategoryList";
     public static final String URL_GET_SUB_CATEGORY = "getSubcategoryListall";
-    //    public static final String URL_GET_RESULT_LIST = "http://www.amarphonebook.com/api/getItemList";
     public static final String URL_GET_RESULT_LIST_WITH_AD = "getItemListadd";
     public static final String URL_GET_SEARCH_SUGGESTIONS = "getAutocompleteList";
-    //    public static final String URL_GET_SEARCH_LIST = "getSearchList";
     public static final String URL_GET_SEARCH_LIST_AD = "getSearchListadd";
     public static final String URL_SIGN_IN = "login";
     public static final String URL_PROFILE_UPDATE = "updateprofile";
@@ -149,7 +148,10 @@ public class Constants {
     public static final Double NULL_LOCATION = 0.0;
     public static final String NO_IMAGE_FOUND = "no_image_found";
 
-    //social page url
+    /*!
+    * social page urls
+    * change the urls to your desired business url
+    */
     public static final String URL_FACEBOOK = "https://www.facebook.com/audacityit";
     public static final String URL_TWITTER = "https://www.facebook.com/audacityit";
     public static final String URL_GOOGLE_PLUS = "https://www.facebook.com/audacityit";
@@ -157,6 +159,8 @@ public class Constants {
     public static final String URL_LINKEDIN = "https://www.facebook.com/audacityit";
 
     public static final String INTENT_EXTRA = "extra";
+
+    //! change hotline number here
     public static final String FINDER_HOTLINE = "+8801670923581";
     public static final int MAX_EMS = 10;
 

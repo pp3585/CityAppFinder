@@ -1,9 +1,10 @@
 package com.audacityit.finder.util;
 
 /**
- * Created by tusharaits on 8/13/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class LocationChangeListener
+ * @brief interface used for detecting user made change in the search filter.
  */
-
 public interface LocationChangeListener {
     public void onLocationChange();
 }

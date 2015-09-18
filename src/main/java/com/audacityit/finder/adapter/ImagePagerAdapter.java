@@ -12,8 +12,11 @@ import com.squareup.picasso.Picasso;
 import static com.audacityit.finder.util.UtilMethods.getDrawableFromFileName;
 
 /**
- * Created by tusharaits on 7/2/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class ImagePagerAdapter
+ * @brief Adapter class for showing images like gallery. Used in DetailViewFragment class
  */
+
 public class ImagePagerAdapter extends PagerAdapter {
 
     private Context mContext;

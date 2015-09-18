@@ -61,6 +61,12 @@ import static com.audacityit.finder.util.UtilMethods.loadJSONFromAsset;
 import static com.audacityit.finder.util.UtilMethods.showHotLineCallDialog;
 import static com.audacityit.finder.util.UtilMethods.showSoftKeyboard;
 
+/**
+ * @author Audacity IT Solutions Ltd.
+ * @class HomeActivity
+ * @brief Fragment holder activity responsible for all fragment transition and control flow
+ */
+
 public class HomeActivity extends AppCompatActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks,
         HomeFragment.CategorySelectionCallbacks,
         SubCategoryFragment.SubCategorySelectionCallbacks,

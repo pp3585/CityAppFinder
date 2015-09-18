@@ -1,7 +1,6 @@
 package com.audacityit.finder.fragment;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -14,6 +13,7 @@ import com.audacityit.finder.R;
 import com.audacityit.finder.activity.HomeActivity;
 import com.audacityit.finder.adapter.CategoryAdapter;
 import com.audacityit.finder.model.Category;
+import com.audacityit.finder.util.ApiHandler;
 import com.audacityit.finder.util.UtilMethods;
 import com.audacityit.finder.util.UtilMethods.InternetConnectionListener;
 
@@ -23,7 +23,6 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 import static com.audacityit.finder.util.Constants.JF_BACKGROUND_IMAGE;
-import static com.audacityit.finder.util.Constants.JF_COLOR_CODE;
 import static com.audacityit.finder.util.Constants.JF_ICON;
 import static com.audacityit.finder.util.Constants.JF_ID;
 import static com.audacityit.finder.util.Constants.JF_TITLE;
@@ -31,17 +30,18 @@ import static com.audacityit.finder.util.UtilMethods.loadJSONFromAsset;
 import static com.audacityit.finder.util.UtilMethods.showNoInternetDialog;
 
 /**
- * Created by tusharaits on 6/24/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class HomeFragment
+ * @brief Fragment for showing the category list
  */
 
-public class HomeFragment extends Fragment implements InternetConnectionListener {
+public class HomeFragment extends Fragment implements InternetConnectionListener, ApiHandler.ApiHandlerListener {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private final int CATEGORY_ACTION = 1;
     private CategorySelectionCallbacks mCallbacks;
     private ArrayList<Category> categoryList;
     private ListView categoryListView;
-    private ProgressDialog progressDialog;
     private InternetConnectionListener internetConnectionListener;
 
     public HomeFragment() {
@@ -91,7 +91,19 @@ public class HomeFragment extends Fragment implements InternetConnectionListener
 
     }
 
+    //! function for populate category list
     private void initCategoryList() {
+
+        /**
+         * json is populating from text file. To make api call use ApiHandler class
+         *
+         *  <CODE>ApiHandler apiHandler = new ApiHandler(this, URL_GET_CATEGORY);</CODE> <BR>
+         *  <CODE>apiHandler.doApiRequest(ApiHandler.REQUEST_GET);</CODE> <BR>
+         *
+         * You will get the response in onSuccessResponse(String tag, String jsonString) method
+         * if successful api call has done. Do the parsing as the following.
+         */
+
         String jsonString = loadJSONFromAsset(getActivity(), "get_category_id_list");
         try {
             JSONArray jsonArray = new JSONArray(jsonString);
@@ -101,7 +113,6 @@ public class HomeFragment extends Fragment implements InternetConnectionListener
                 Category category = new Category();
                 category.setId(jsonArray.getJSONObject(i).getString(JF_ID));
                 category.setTitle(jsonArray.getJSONObject(i).getString(JF_TITLE));
-                category.setColorCodeRGB(jsonArray.getJSONObject(i).getString(JF_COLOR_CODE));
                 category.setIconUrl(jsonArray.getJSONObject(i).getString(JF_ICON));
 
                 if (!TextUtils.isEmpty(jsonArray.getJSONObject(i).getString(JF_BACKGROUND_IMAGE))) {
@@ -136,6 +147,19 @@ public class HomeFragment extends Fragment implements InternetConnectionListener
         }
     }
 
+    //! catch json response from here
+    @Override
+    public void onSuccessResponse(String tag, String jsonString) {
+        //! do same parsing as done in initCategoryList()
+    }
+
+    //! detect response error here
+    @Override
+    public void onFailureResponse(String tag) {
+
+    }
+
+    //! callback interface listen by HomeActivity to detect user click on category
     public static interface CategorySelectionCallbacks {
         void onCategorySelected(String catID, String title);
     }

@@ -21,8 +21,11 @@ import static com.audacityit.finder.util.Validator.isPasswordMatched;
 import static com.audacityit.finder.util.Validator.isPasswordValid;
 
 /**
- * Created by tusharaits on 6/25/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class ChangePasswordActivity
+ * @brief Activity for change user password
  */
+
 public class ChangePasswordActivity extends Activity implements View.OnClickListener, View.OnTouchListener, InternetConnectionListener {
 
     private final int CHANGE_PASSWORD_ACTION = 1;

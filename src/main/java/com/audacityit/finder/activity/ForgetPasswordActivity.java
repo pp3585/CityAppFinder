@@ -23,8 +23,11 @@ import static com.audacityit.finder.util.Validator.isMobileNumberValid;
 import static com.audacityit.finder.util.Validator.setPhoneCodeListener;
 
 /**
- * Created by tusharaits on 7/7/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class ForgetPasswordActivity
+ * @brief Activity for sending the password to the user in case of forget
  */
+
 public class ForgetPasswordActivity extends Activity implements View.OnClickListener, InternetConnectionListener {
 
     private final int FORGET_PASSWORD_ACTION = 1;

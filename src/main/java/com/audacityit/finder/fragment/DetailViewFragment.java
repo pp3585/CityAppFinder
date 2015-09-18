@@ -65,7 +65,9 @@ import static com.audacityit.finder.util.UtilMethods.showNoGpsDialog;
 import static com.audacityit.finder.util.UtilMethods.showNoInternetDialog;
 
 /**
- * Created by tusharaits on 7/2/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class DetailViewFragment
+ * @brief Fragment for showing business in detail view with user comments, rating and gallery view
  */
 public class DetailViewFragment extends Fragment implements InternetConnectionListener {
 
@@ -116,9 +118,10 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
             countRatingTV = (TextView) rootView.findViewById(R.id.countRatingTV);
             allRatingTV = (TextView) rootView.findViewById(R.id.allRatingTV);
 
-
+            //! viewpager to show images with horizontal scrolling.
             imagePager.setAdapter(new ImagePagerAdapter(getActivity(), itemDetails.getImageLargeUrls()));
 
+            //! hide previous and next arrow if adapter size is less then 2
             if (imagePager.getAdapter().getCount() <= 1) {
                 prevImgView.setVisibility(View.INVISIBLE);
                 nextImgView.setVisibility(View.INVISIBLE);
@@ -289,6 +292,10 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
 
     private void showMap() {
         if (itemDetails.getLatitude() != NULL_LOCATION && itemDetails.getLongitude() != NULL_LOCATION) {
+            /** set APP_MAP_MODE to true to enable internet checking
+            * because map needs internet connection
+            * to  show user and business location as well as their distance
+            */
             APP_MAP_MODE = true;
             if (isConnectedToInternet(getActivity())) {
                 if (isGooglePlayServicesAvailable()) {
@@ -315,6 +322,14 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
             Toast.makeText(getActivity(), getResources().getString(R.string.location_not_found), Toast.LENGTH_SHORT).show();
     }
 
+
+    /**
+     * @brief custom dialog for showing rating dialog
+     * @param context application context
+     * @param headline headline in String
+     * @param positiveString positive text in String
+     * @param negativeString negative text in String
+     */
     private void showRatingDialog(final Context context, String headline,
                                   String positiveString, String negativeString) {
         final EditText etComment;
@@ -360,7 +375,9 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
         getUserComment();
     }
 
+    //* get all comments for the specific business
     private void getUserComment() {
+        //* call api here to get all comments
         String jsonString = loadJSONFromAsset(getActivity(), "get_user_comments");
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
@@ -409,6 +426,7 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
     }
 
     private void getUserComment(EditText etComment, CustomRatingBar ratingBar) {
+        //* make api call here to send user comment to server
         Toast.makeText(getActivity(), MSG_RATING_SUCCESSFUL, Toast.LENGTH_SHORT).show();
         Collections.reverse(commentList);
         commentList.add(new Comment(getPreferenceString(getActivity(), JF_NAME),
@@ -479,11 +497,15 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
         GooglePlayServicesUtil.getErrorDialog(googlePlayServiceStatus, getActivity(), 0).show();
     }
 
-
+    /**
+     * @brief methods to add all comments to comment view
+     * @param commentList collection of comment to make updates of comment view
+     */
     private void addCommentsToView(ArrayList<Comment> commentList) {
         commentLayout.removeAllViews();
         for (Comment comment : commentList) {
             inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            //* change the comment layout from res > layout > layout_comment
             RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.layout_comment, null);
 
             if (TextUtils.isEmpty(comment.getUserName())) {

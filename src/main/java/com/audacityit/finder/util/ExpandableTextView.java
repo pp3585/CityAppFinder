@@ -10,7 +10,8 @@ import android.widget.TextView;
 import com.audacityit.finder.R;
 
 /**
- * Created by tusharaits on 8/21/15.
+ * @class ExpandableTextView
+ * @brief Custom text view with expanding functionality
  */
 
 public class ExpandableTextView extends TextView {

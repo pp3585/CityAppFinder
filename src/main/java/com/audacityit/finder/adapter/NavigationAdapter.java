@@ -13,7 +13,9 @@ import com.audacityit.finder.R;
 import static com.audacityit.finder.util.UtilMethods.isUserSignedIn;
 
 /**
- * Created by tusharaits on 6/29/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class NavigationAdapter
+ * @brief Adapter for populating navigation drawer list view
  */
 
 public class NavigationAdapter extends BaseExpandableListAdapter {
@@ -32,6 +34,12 @@ public class NavigationAdapter extends BaseExpandableListAdapter {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
 
+        /*
+        * ! different options will be available based on user singed in/ signed out condition
+        * to change the options modify options, optionImages, optionImagesSelected array
+        * optionImages and optionImagesSelected are the array of images to show on idle and
+        * on selection mode.
+        */
         if (isUserSignedIn(context)) {
             options = new String[]{"Home", "Profile", "Social", "Log out"};
 
@@ -86,16 +94,6 @@ public class NavigationAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-//        if (isUserSignedIn(context)) {
-//            if (groupPosition == 0)
-//                return profileOptions[groupPosition];
-//            else if (groupPosition == 1)
-//                return socialOptions[groupPosition];
-//            else
-//                return null;
-//        } else
-//            return socialOptions[childPosition];
-
         if (isUserSignedIn(context)) {
             if (groupPosition == 1)
                 return profileOptions[childPosition];

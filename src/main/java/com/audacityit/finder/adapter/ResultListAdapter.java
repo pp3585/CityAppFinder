@@ -22,7 +22,9 @@ import static com.audacityit.finder.util.Constants.NO_IMAGE_FOUND;
 import static com.audacityit.finder.util.UtilMethods.browseUrl;
 
 /**
- * Created by tusharaits on 6/24/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class ResultListAdapter
+ * @brief Adapter class for populating the business list
  */
 
 public class ResultListAdapter extends ArrayAdapter<Category> implements View.OnClickListener {

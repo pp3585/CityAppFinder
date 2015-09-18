@@ -15,8 +15,11 @@ import com.audacityit.finder.R;
 import static com.audacityit.finder.util.UtilMethods.phoneCall;
 
 /**
- * Created by tusharaits on 8/26/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class PhoneCallDialog
+ * @brief class for showing phone call dialog with a list of phone number
  */
+
 public class PhoneCallDialog {
 
     private static AlertDialog dialog = null;

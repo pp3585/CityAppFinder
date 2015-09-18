@@ -1,75 +1,82 @@
 package com.audacityit.finder.model;
 
 /**
- * Created by tusharaits on 6/24/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class Category
+ * @brief data structure class used by HomeFragment
  */
 
 public class Category {
 
     private String id;
     private String title;
-    private int weight;
     private String iconUrl;
     private String imageUrl;
-    private String colorCode;
-    private String colorCodeRGB;
 
     public Category() {
 
     }
 
+    /**
+     * @brief methods for getting category id
+     * @return id in String
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * @brief methods for setting category id
+     * @param id in String
+     */
     public void setId(String id) {
         this.id = id;
     }
 
+    /**
+     * @brief methods for getting title of category
+     * @return title in String
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * @brief methods for setting category title
+     * @return title in String
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
+    /**
+     * @brief methods for getting imageUrl of category
+     * @return imageUrl in String
+     */
     public String getImageUrl() {
         return imageUrl;
     }
 
+    /**
+     * @brief methods for setting category imageUrl
+     * @return imageUrl in String
+     */
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
-    public String getColorCode() {
-        return colorCode;
-    }
-
-    public void setColorCode(String colorCode) {
-        this.colorCode = colorCode;
-    }
-
-    public String getColorCodeRGB() {
-        return colorCodeRGB;
-    }
-
-    public void setColorCodeRGB(String colorCodeRGB) {
-        this.colorCodeRGB = colorCodeRGB;
-    }
-
+    /**
+     * @brief methods for getting iconUrl of category
+     * @return iconUrl in String
+     */
     public String getIconUrl() {
         return iconUrl;
     }
 
+    /**
+     * @brief methods for setting category iconUrl
+     * @return iconUrl in String
+     */
     public void setIconUrl(String iconUrl) {
         this.iconUrl = iconUrl;
     }

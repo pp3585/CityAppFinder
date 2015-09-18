@@ -15,6 +15,12 @@ import android.widget.ScrollView;
 import com.audacityit.finder.R;
 import com.audacityit.finder.util.UtilMethods;
 
+/**
+ * @author Audacity IT Solutions Ltd.
+ * @mainpage SplashActivity
+ * @class SplashActivity
+ * @brief Activity for showing the splash screen
+ */
 
 public class SplashActivity extends AppCompatActivity {
 

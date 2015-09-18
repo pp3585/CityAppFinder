@@ -11,8 +11,11 @@ import android.widget.TextView;
 import com.audacityit.finder.R;
 
 /**
- * Created by tusharaits on 9/1/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class TermsConditionActivity
+ * @brief Activity for showing terms and condition to the user
  */
+
 public class TermsConditionActivity extends AppCompatActivity {
 
     TextView btnContinue;

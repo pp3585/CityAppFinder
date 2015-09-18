@@ -42,6 +42,12 @@ import java.util.List;
 import static com.audacityit.finder.fragment.DetailViewFragment.itemDetails;
 import static com.audacityit.finder.util.UtilMethods.isUserSignedIn;
 
+/**
+ * @author Audacity IT Solutions Ltd.
+ * @class MapActivity
+ * @brief Activity for showing user and business location with possible path to travel on map
+ */
+
 public class MapActivity extends FragmentActivity implements
         LocationListener,
         GoogleApiClient.ConnectionCallbacks,

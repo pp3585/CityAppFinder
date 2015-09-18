@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @class PathJSONParser
+ * @brief Decodes points from polylines to show on map
+ */
+
 public class PathJSONParser {
 
     public List<List<HashMap<String, String>>> parse(JSONObject jObject) {

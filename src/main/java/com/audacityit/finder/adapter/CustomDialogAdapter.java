@@ -10,8 +10,11 @@ import android.widget.TextView;
 import com.audacityit.finder.R;
 
 /**
- * Created by tusharaits on 7/14/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class CustomDialogAdapter
+ * @brief Adapter for showing list in dialog. Used in PostBusinessActivity
  */
+
 public class CustomDialogAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;

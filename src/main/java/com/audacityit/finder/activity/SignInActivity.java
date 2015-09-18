@@ -29,8 +29,11 @@ import static com.audacityit.finder.util.Validator.isPasswordValid;
 import static com.audacityit.finder.util.Validator.setPhoneCodeListener;
 
 /**
- * Created by tusharaits on 6/25/15.
+ * @author Audacity IT Solutions Ltd.
+ * @class SignInActivity
+ * @brief Responsible for making user logged in
  */
+
 public class SignInActivity extends Activity implements View.OnClickListener, View.OnTouchListener, InternetConnectionListener {
 
     private static SignInCompleteListener signInCompleteListener;

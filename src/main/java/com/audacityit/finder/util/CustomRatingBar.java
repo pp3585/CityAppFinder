@@ -14,14 +14,13 @@ import android.widget.LinearLayout;
 
 import com.audacityit.finder.R;
 
-
 /**
- * Created by poliveira on 07/08/2014.
+ * @author poliveira
+ * @dates 07/08/2014
+ * @class CustomRatingBar
+ * @brief Regular rating bar. It wraps the stars making its size fit the parent
  */
 
-/**
- * regular rating bar. it wraps the stars making its size fit the parent
- */
 public class CustomRatingBar extends LinearLayout {
     private int mMaxStars = 5;
     private float mCurrentScore = 0.0f;

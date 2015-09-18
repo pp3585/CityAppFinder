@@ -35,6 +35,13 @@ import android.widget.TextView;
 import com.audacityit.finder.R;
 
 /**
+ * @author Ian G. Clifton
+ * @class FloatLabel
+ * @brief A ViewGroup that consists of an EditText and a TextView as the label
+ */
+
+
+/**
  * A ViewGroup that consists of an EditText and a TextView as the label.<br>
  * <br>
  * When the EditText is empty, its hint is displayed. When it is nonempty, the
