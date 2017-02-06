@@ -161,7 +161,7 @@ public class Constants {
     public static final String INTENT_EXTRA = "extra";
 
     //! change hotline number here
-    public static final String FINDER_HOTLINE = "+8801670923581";
+    public static final String FINDER_HOTLINE = "+919519361777";
     public static final int MAX_EMS = 10;
 
     //check flag
@@ -173,7 +173,7 @@ public class Constants {
     public static int ITEM_TYPE_COMPANY = 0;
     public static int ITEM_TYPE_AD = 1;
 
-    public static final double DUMMY_LOCATION_LATITUDE = 23.7967599;
-    public static final double DUMMY_LOCATION_LONGITUDE = 90.4261766;
+    public static final double DUMMY_LOCATION_LATITUDE = 25.7967599;
+    public static final double DUMMY_LOCATION_LONGITUDE = 88.4261766;
 
 }

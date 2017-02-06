@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 /**
- * @author Audacity IT Solutions Ltd.
+ * @author Ideas Hub
  * @class CustomTextView
  * @brief Supports custom typeface
  */

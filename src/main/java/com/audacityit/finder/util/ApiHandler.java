@@ -21,7 +21,7 @@ import java.util.Set;
 import static com.audacityit.finder.util.Constants.URL_APB_API;
 
 /**
- * @author Audacity IT Solutions Ltd.
+ * @author Ideas Hub
  * @class ApiHandler
  * @brief Easy implementation of OkHttp library
  */

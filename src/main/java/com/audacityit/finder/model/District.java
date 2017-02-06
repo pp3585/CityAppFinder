@@ -1,7 +1,7 @@
 package com.audacityit.finder.model;
 
 /**
- * @author Audacity IT Solutions Ltd.
+ * @author Ideas Hub
  * @class District
  * @brief data structure class used by HomeActivity
  */
