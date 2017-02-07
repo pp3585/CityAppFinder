@@ -176,4 +176,6 @@ public class Constants {
     public static final double DUMMY_LOCATION_LATITUDE = 25.7967599;
     public static final double DUMMY_LOCATION_LONGITUDE = 88.4261766;
 
+    public static final String KEY_FINISH_SPLASH = "finish_splash";/*Added as part of enhancement*/
+
 }

@@ -47,7 +47,8 @@ public class TermsConditionActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TermsConditionActivity.this, LandingActivity.class));
+                /*Modified as part of enhancement*/
+                //startActivity(new Intent(TermsConditionActivity.this, LandingActivity.class));
                 finish();
             }
         });

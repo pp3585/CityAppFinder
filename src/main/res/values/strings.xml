@@ -15,7 +15,8 @@
     <string name="promo_text">Startup India Project</string>
     <string name="sign_up_string">Sign Up</string>
     <string name="see_first_string">See First</string>
-    <string name="have_account_string"><u>Already have an account?</u></string>
+    <string name="have_account_string">Already have an account?</string><!--Modified as part of enhancement-->
+    <string name="have_account_string_link"><u>Already have an account?</u></string><!--Modified as part of enhancement-->
     <string name="hint_phone_number">Mobile Number</string>
     <string name="hint_email">Email</string>
     <string name="hint_full_name">Full Name</string>
@@ -104,5 +105,6 @@
     <string name="dummy_company_address">Civil Lines Allahabad</string>
     <string name="dummy_web">www.cityappindia.in</string>
     <string name="dummy_email">cityappindia@gmail.com</string>
+    <string name="click_to_enter">Click to enter</string>
 
 </resources>

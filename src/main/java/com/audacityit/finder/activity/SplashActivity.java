@@ -3,6 +3,7 @@ package com.audacityit.finder.activity;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.ResultReceiver;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import com.audacityit.finder.R;
+import com.audacityit.finder.util.Constants;
 import com.audacityit.finder.util.UtilMethods;
 
 /**
@@ -22,7 +24,7 @@ import com.audacityit.finder.util.UtilMethods;
  * @brief Activity for showing the splash screen
  */
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements View.OnClickListener, VerificationActivity.SignUpCompleteListener, SignInActivity.SignInCompleteListener {
 
     private ScrollView promoScrollView;
     private ImageView promoView;
@@ -38,12 +40,18 @@ public class SplashActivity extends AppCompatActivity {
         ScrollView.LayoutParams params = new ScrollView.LayoutParams(point.x * 2,
                 ScrollView.LayoutParams.MATCH_PARENT);
         promoView.setLayoutParams(params);
-        findViewById(R.id.btnSkip).setOnClickListener(new View.OnClickListener() {
+        /*Modified as part of enhancement*/
+        findViewById(R.id.btnSkip).setOnClickListener(this);
+        findViewById(R.id.btnSignUp).setOnClickListener(this);
+        findViewById(R.id.btnSeeFirst).setOnClickListener(this);
+        VerificationActivity.setListener(this);
+        SignInActivity.setListener(this);
+        /*findViewById(R.id.btnSkip).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SplashActivity.this, TermsConditionActivity.class));
+                startActivity(new Intent(SplashActivity.this, SignInActivity.class));
             }
-        });
+        });*/
 
         promoScrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -76,6 +84,32 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        //finish();/*Modified as part of enhancement*/
+    }
+
+    /*Modified as part of enhancement*/
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.btnSkip:
+                startActivity(new Intent(SplashActivity.this, SignInActivity.class));
+                break;
+            case R.id.btnSignUp:
+                startActivity(new Intent(SplashActivity.this, SignUpActivity.class));
+                break;
+            case R.id.btnSeeFirst:
+                startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                break;
+        }
+    }
+
+    @Override
+    public void onSignInComplete() {
+        finish();
+    }
+
+    @Override
+    public void onSignUpComplete() {
         finish();
     }
 }

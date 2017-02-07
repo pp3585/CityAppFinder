@@ -30,13 +30,19 @@
             android:name=".activity.TermsConditionActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
-            android:theme="@style/FullScreen" />
+            android:theme="@style/FullScreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="com.audacityit.finder.activity.TermsConditionActivity" />
+            </intent-filter>
+        </activity>
 
-        <activity
+        <!--<activity
             android:name=".activity.LandingActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
-            android:theme="@style/FullScreen" />
+            android:theme="@style/FullScreen" />-->
 
         <activity
             android:name=".activity.SignUpActivity"

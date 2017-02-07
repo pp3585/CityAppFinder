@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
@@ -12,6 +13,7 @@ import android.view.View;
 
 import com.audacityit.finder.R;
 import com.audacityit.finder.model.User;
+import com.audacityit.finder.util.Constants;
 import com.audacityit.finder.util.FloatLabel;
 import com.audacityit.finder.util.UtilMethods;
 import com.audacityit.finder.util.UtilMethods.InternetConnectionListener;

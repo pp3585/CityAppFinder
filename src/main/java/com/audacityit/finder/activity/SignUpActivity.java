@@ -3,13 +3,18 @@ package com.audacityit.finder.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.audacityit.finder.R;
@@ -56,11 +61,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        final TextView btnSignUp = (TextView) findViewById(R.id.btnSignUp);
+
         findViewById(R.id.crossImgView).setOnClickListener(this);
         findViewById(R.id.btnHaveAccountTV).setOnClickListener(this);
         findViewById(R.id.showPasswordImg).setOnTouchListener(this);
         findViewById(R.id.showRetypePasswordImg).setOnTouchListener(this);
-        findViewById(R.id.btnSignUp).setOnClickListener(this);
+        btnSignUp.setOnClickListener(this);
+
         etMobileNumber = (FloatLabel) findViewById(R.id.etMobileNumber);
         etFullName = (FloatLabel) findViewById(R.id.etFullName);
         etFullName.getEditText().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
@@ -81,6 +89,27 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 }
                 return false;
+            }
+        });
+
+        /*Modified as part of enhancement*/
+        CheckBox cbTerms = (CheckBox)findViewById(R.id.cbTerms);
+        cbTerms.setText(Html.fromHtml("I accept the " +
+                "<a href='com.audacityit.finder.activity.TermsConditionActivity://'>Terms and Conditions</a>"));
+        cbTerms.setMovementMethod(LinkMovementMethod.getInstance());
+        cbTerms.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    btnSignUp.setBackgroundResource(R.drawable.btn_bg_deep_selection);
+                    btnSignUp.setTextAppearance(SignUpActivity.this, R.style.btnDeepSelection);
+                } else {
+                    btnSignUp.setBackgroundResource(R.drawable.btn_bg_deep_selection_idle);
+                }
+                btnSignUp.setEnabled(isChecked);
+                btnSignUp.setClickable(isChecked);
+                btnSignUp.setFocusable(isChecked);
             }
         });
     }
@@ -153,7 +182,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 });
             }
         } catch (JSONException e) {
-
+            e.printStackTrace();// TODO
         }
     }
 

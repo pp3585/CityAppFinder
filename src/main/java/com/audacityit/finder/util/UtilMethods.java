@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.audacityit.finder.R;
 import com.audacityit.finder.activity.LandingActivity;
+import com.audacityit.finder.activity.SplashActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,7 +52,7 @@ public class UtilMethods {
     private static AlertDialog dialog = null;
 
     /**
-     * @param context
+     * @param context the context that uses this method
      * @return true or false mentioning the device is connected or not
      * @brief checking the internet connection on run time
      */
@@ -83,7 +84,7 @@ public class UtilMethods {
                 PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(key, value);
-        editor.commit();
+        editor.apply();
     }
 
     /**
@@ -109,7 +110,7 @@ public class UtilMethods {
                 PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
-        editor.commit();
+        editor.apply();
     }
 
     /**
@@ -217,10 +218,10 @@ public class UtilMethods {
      * @brief methods for checking any user has already signed in or not
      */
     public static boolean isUserSignedIn(Context context) {
-        if (!TextUtils.isEmpty(getPreferenceString(context, Constants.JF_CONTACT_NUMBER))) {
-            return true;
-        } else {
+        if (TextUtils.isEmpty(getPreferenceString(context, Constants.JF_CONTACT_NUMBER))) {
             return false;
+        } else {
+            return true;
         }
     }
 
@@ -286,7 +287,7 @@ public class UtilMethods {
                 .setPositiveButton(positiveString, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         deleteUser(context);
-                        context.startActivity(new Intent(context, LandingActivity.class));
+                        context.startActivity(new Intent(context, SplashActivity.class));
                         ((Activity) context).finish();
                     }
                 })
@@ -385,7 +386,7 @@ public class UtilMethods {
     }
 
     /**
-     * @param context
+     * @param context the context that uses this method
      * @brief methods for delete the existing log in user by putting empty string to the shared
      * preference field
      */
@@ -404,8 +405,7 @@ public class UtilMethods {
      */
     public static int dpToPx(Context context, int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-        return px;
+        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
     /**
@@ -422,9 +422,9 @@ public class UtilMethods {
      * @brief interface used by showNoInternetDialog() methods
      */
     public interface InternetConnectionListener {
-        public void onConnectionEstablished(int code);
+        void onConnectionEstablished(int code);
 
-        public void onUserCanceled(int code);
+        void onUserCanceled(int code);
     }
 
     /**
@@ -434,7 +434,7 @@ public class UtilMethods {
      * @brief methods for loading dummy JSON String from asset folder
      */
     public static String loadJSONFromAsset(Context context, String fileName) {
-        String json = null;
+        String json;
         try {
             InputStream is = context.getAssets().open("json/" + fileName);
             int size = is.available();

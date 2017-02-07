@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.ResultReceiver;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -41,6 +43,7 @@ import com.audacityit.finder.fragment.ResultListFragment;
 import com.audacityit.finder.fragment.SubCategoryFragment;
 import com.audacityit.finder.model.District;
 import com.audacityit.finder.model.Item;
+import com.audacityit.finder.util.Constants;
 import com.audacityit.finder.util.UtilMethods;
 
 import org.json.JSONArray;
@@ -100,6 +103,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
 
@@ -149,7 +153,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
         onNavigationDrawerItemSelected(0);
     }
 
-
     @Override
     public void onBackPressed() {
 
@@ -174,7 +177,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                     navigationDepth--;
                 }
                 isResultListFragmentOpened = false;
-                getSupportActionBar().setTitle(getTitle());
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle(getTitle());
+                }
                 break;
             case 2:
                 if (TextUtils.isEmpty(SubCategoryFragment.catId)) {
@@ -186,8 +191,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                         .commit();
                 if (navigationDepth > 0)
                     navigationDepth--;
-                if (subCategoryTitle != null)
-                    getSupportActionBar().setTitle(subCategoryTitle);
+                if (subCategoryTitle != null) {
+                    if (getSupportActionBar() != null) {
+                        getSupportActionBar().setTitle(subCategoryTitle);
+                    }
+                }
                 break;
             case 3:
                 if (TextUtils.isEmpty(ResultListFragment.catId)) {
@@ -199,8 +207,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                         .commit();
                 if (navigationDepth > 0)
                     navigationDepth--;
-                if (resultListTitle != null)
-                    getSupportActionBar().setTitle(resultListTitle);
+                if (resultListTitle != null) {
+                    if (getSupportActionBar() != null) {
+                        getSupportActionBar().setTitle(resultListTitle);
+                    }
+                }
                 break;
             case 4:
                 fragmentManager = getSupportFragmentManager();
@@ -208,7 +219,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                         .replace(R.id.container, HomeFragment.newInstance(0))
                         .commit();
                 navigationDepth = 0;
-                getSupportActionBar().setTitle(getTitle());
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle(getTitle());
+                }
                 isResultListFragmentOpened = false;
                 break;
             case 5:
@@ -218,7 +231,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                         .commit();
                 if (navigationDepth > 0)
                     navigationDepth--;
-                getSupportActionBar().setTitle(ResultListFragment.searchTerm);
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle(ResultListFragment.searchTerm);
+                }
                 break;
 
             default:
@@ -269,18 +284,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        if (navigationDepth == 0)
-            actionBar.setTitle(getTitle());
-        else if (navigationDepth == 1)
-            actionBar.setTitle(subCategoryTitle);
-        else if (navigationDepth == 2)
-            actionBar.setTitle(resultListTitle);
-        else if (navigationDepth == 3)
-            actionBar.setTitle(detailViewTitle);
-        else if (navigationDepth == 4)
-            actionBar.setTitle(searchQueryTitle);
+        if (actionBar != null) {
+            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+            actionBar.setDisplayShowTitleEnabled(true);
+            if (navigationDepth == 0)
+                actionBar.setTitle(getTitle());
+            else if (navigationDepth == 1)
+                actionBar.setTitle(subCategoryTitle);
+            else if (navigationDepth == 2)
+                actionBar.setTitle(resultListTitle);
+            else if (navigationDepth == 3)
+                actionBar.setTitle(detailViewTitle);
+            else if (navigationDepth == 4)
+                actionBar.setTitle(searchQueryTitle);
+        }
     }
 
     @Override
@@ -458,7 +475,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                 .replace(R.id.container, SubCategoryFragment.newInstance(catID))
                 .commit();
         navigationDepth++;
-        getSupportActionBar().setTitle(title);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
         subCategoryTitle = title;
     }
 
@@ -470,7 +489,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                 .replace(R.id.container, ResultListFragment.newInstance(catID))
                 .commit();
         navigationDepth++;
-        getSupportActionBar().setTitle(title);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
         resultListTitle = title;
     }
 
@@ -482,7 +503,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                 .commit();
         hideSearchView();
         navigationDepth++;
-        getSupportActionBar().setTitle(itemDetails.getTitle());
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(itemDetails.getTitle());
+        }
         detailViewTitle = itemDetails.getTitle();
     }
 
@@ -494,7 +517,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                 .replace(R.id.container, ResultListFragment.newInstance("", suggestions.get(position)))
                 .commit();
         navigationDepth = 4;
-        getSupportActionBar().setTitle(suggestions.get(position));
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(suggestions.get(position));
+        }
         searchQueryTitle = suggestions.get(position);
     }
 
@@ -508,7 +533,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                 .replace(R.id.container, ResultListFragment.newInstance("", query))
                 .commit();
         navigationDepth = 4;
-        getSupportActionBar().setTitle(query);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(query);
+        }
         searchQueryTitle = query;
         return false;
     }
@@ -537,8 +564,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                 suggestionListView.setVisibility(View.VISIBLE);
             }
             suggestionListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, suggestions) {
+                @NonNull
                 @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
+                public View getView(int position, View convertView, @NonNull ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
                     TextView textView = (TextView) view.findViewById(android.R.id.text1);
                     if (suggestions != null && suggestions.size() > 0 && !TextUtils.isEmpty(mCurrentSearchText)) {
@@ -573,7 +601,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
             JSONArray jsonArray = new JSONArray(jsonString);
             int arraySize = jsonArray.length();
             if (arraySize > 0) {
-                suggestions = new ArrayList<String>();
+                suggestions = new ArrayList<>();
                 for (int i = 0; i < arraySize; i++) {
                     suggestions.add(jsonArray.getString(i));
                 }
@@ -613,7 +641,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
         String jsonString = loadJSONFromAsset(this, "get_district");
         try {
             final JSONArray jsonArray = new JSONArray(jsonString);
-            districtList = new ArrayList<District>();
+            districtList = new ArrayList<>();
             for (int i = 0; i < jsonArray.length(); i++) {
                 districtList.add(new District(jsonArray.getJSONObject(i).getJSONObject(KEY_DISTRICT_2).getString(JF_ID),
                         jsonArray.getJSONObject(i).getJSONObject(KEY_DISTRICT_2).getString(JF_TITLE)));
@@ -628,7 +656,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
         String jsonString = loadJSONFromAsset(this, "get_area");
         try {
             JSONArray jsonArray = new JSONArray(jsonString);
-            areaList = new ArrayList<String>();
+            areaList = new ArrayList<>();
             areaList.add("All Area");
             for (int i = 0; i < jsonArray.length(); i++) {
                 areaList.add(jsonArray.getJSONObject(i).getJSONObject(JF_ENTRY).getString(JF_AREA));
