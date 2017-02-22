@@ -25,7 +25,7 @@ import static com.audacityit.finder.util.Validator.setPhoneCodeListener;
 /**
  * @author Audacity IT Solutions Ltd.
  * @class ForgetPasswordActivity
- * @brief Activity for sending the password to the user in case of forget
+ * @brief Activity for sending the password to the ic_user in case of forget
  */
 
 public class ForgetPasswordActivity extends Activity implements View.OnClickListener, InternetConnectionListener {

@@ -43,4 +43,7 @@
     <dimen name="verificationHeightWidth">40dp</dimen>
     <dimen name="detail_view_comment_rating_bar_height">40dp</dimen>
     <dimen name="value_10sp">10sp</dimen>
+    <dimen name="value_1dp">1dp</dimen>
+    <dimen name="value_6dp">6dp</dimen>
+    <dimen name="dimen_150dp">150dp</dimen>
 </resources>

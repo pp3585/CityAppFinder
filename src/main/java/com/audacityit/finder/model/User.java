@@ -3,7 +3,7 @@ package com.audacityit.finder.model;
 /**
  * @author Audacity IT Solutions Ltd.
  * @class User
- * @brief data structure class for storing user information
+ * @brief data structure class for storing ic_user information
  */
 
 public class User {
@@ -22,7 +22,7 @@ public class User {
     }
 
     /**
-     * @brief get id of user
+     * @brief get id of ic_user
      * @return id in String
      */
     public String getId() {
@@ -30,7 +30,7 @@ public class User {
     }
 
     /**
-     * @brief set id of user
+     * @brief set id of ic_user
      * @param id in String
      */
     public void setId(String id) {
@@ -38,7 +38,7 @@ public class User {
     }
 
     /**
-     * @brief get phone number of user
+     * @brief get phone number of ic_user
      * @return phoneNumber in String
      */
     public String getPhoneNumber() {
@@ -46,7 +46,7 @@ public class User {
     }
 
     /**
-     * @brief set phoneNumber of user
+     * @brief set phoneNumber of ic_user
      * @param phoneNumber in String
      */
     public void setPhoneNumber(String phoneNumber) {
@@ -54,7 +54,7 @@ public class User {
     }
 
     /**
-     * @brief get name of user
+     * @brief get name of ic_user
      * @return name in String
      */
     public String getName() {
@@ -62,7 +62,7 @@ public class User {
     }
 
     /**
-     * @brief set name of user
+     * @brief set name of ic_user
      * @param name in String
      */
     public void setName(String name) {
@@ -70,7 +70,7 @@ public class User {
     }
 
     /**
-     * @brief get email of user
+     * @brief get email of ic_user
      * @return email in String
      */
     public String getEmail() {
@@ -78,7 +78,7 @@ public class User {
     }
 
     /**
-     * @brief set email of user
+     * @brief set email of ic_user
      * @param email in String
      */
     public void setEmail(String email) {
@@ -86,7 +86,7 @@ public class User {
     }
 
     /**
-     * @brief get gender of user
+     * @brief get gender of ic_user
      * @return gender in String
      */
     public String getGenderId() {
@@ -94,7 +94,7 @@ public class User {
     }
 
     /**
-     * @brief set gender of user
+     * @brief set gender of ic_user
      * @param genderId in String
      */
     public void setGenderId(String genderId) {

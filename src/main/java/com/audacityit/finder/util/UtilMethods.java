@@ -215,7 +215,7 @@ public class UtilMethods {
     /**
      * @param context the application context
      * @return true or false
-     * @brief methods for checking any user has already signed in or not
+     * @brief methods for checking any ic_user has already signed in or not
      */
     public static boolean isUserSignedIn(Context context) {
         if (TextUtils.isEmpty(getPreferenceString(context, Constants.JF_CONTACT_NUMBER))) {
@@ -387,7 +387,7 @@ public class UtilMethods {
 
     /**
      * @param context the context that uses this method
-     * @brief methods for delete the existing log in user by putting empty string to the shared
+     * @brief methods for delete the existing log in ic_user by putting empty string to the shared
      * preference field
      */
     public static void deleteUser(Context context) {

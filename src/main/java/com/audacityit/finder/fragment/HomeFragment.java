@@ -1,8 +1,12 @@
 package com.audacityit.finder.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +15,11 @@ import android.widget.ListView;
 
 import com.audacityit.finder.R;
 import com.audacityit.finder.activity.HomeActivity;
+import com.audacityit.finder.activity.SignUpActivity;
+import com.audacityit.finder.activity.SplashActivity;
 import com.audacityit.finder.adapter.CategoryAdapter;
+import com.audacityit.finder.adapter.CustomPagerAdapter;
+import com.audacityit.finder.adapter.CustomViewPagerAdapter;
 import com.audacityit.finder.model.Category;
 import com.audacityit.finder.util.ApiHandler;
 import com.audacityit.finder.util.UtilMethods;
@@ -35,7 +43,7 @@ import static com.audacityit.finder.util.UtilMethods.showNoInternetDialog;
  * @brief Fragment for showing the category list
  */
 
-public class HomeFragment extends Fragment implements InternetConnectionListener, ApiHandler.ApiHandlerListener {
+public class HomeFragment extends Fragment implements InternetConnectionListener, ApiHandler.ApiHandlerListener, ViewPager.OnPageChangeListener {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private final int CATEGORY_ACTION = 1;
@@ -43,6 +51,8 @@ public class HomeFragment extends Fragment implements InternetConnectionListener
     private ArrayList<Category> categoryList;
     private ListView categoryListView;
     private InternetConnectionListener internetConnectionListener;
+    private CustomPagerAdapter mViewPagerAdapter;
+    private ViewPager mViewPager;
 
     public HomeFragment() {
 
@@ -71,15 +81,44 @@ public class HomeFragment extends Fragment implements InternetConnectionListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        categoryListView = (ListView) rootView.findViewById(R.id.categoryListView);
+        //categoryListView = (ListView) rootView.findViewById(R.id.categoryListView);
+
         return rootView;
     }
+
+    /**************************Newly added*****************/
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // Create the adapter that will return a fragment for each of the two
+        // tabs of the activity.
+        mViewPagerAdapter = new CustomPagerAdapter(getContext());
+        // Set up the ViewPager with the adapter.
+        mViewPager = (ViewPager) view.findViewById(R.id.viewPagerContainer);
+        mViewPager.setAdapter(mViewPagerAdapter);
+        mViewPager.addOnPageChangeListener(this);
+
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabsHome);
+        tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.green_color));
+        tabLayout.setSelectedTabIndicatorHeight((int) (3 * getResources().getDisplayMetrics().density));
+
+        mViewPager.post(new Runnable() {
+            @Override
+            public void run() {
+                mViewPager.setCurrentItem(0);
+            }
+        });
+    }
+
+
+    /*********************************/
 
     @Override
     public void onResume() {
         super.onResume();
         if (UtilMethods.isConnectedToInternet(getActivity())) {
-            initCategoryList();
+            //initCategoryList();
         } else {
             internetConnectionListener = (InternetConnectionListener) HomeFragment.this;
             showNoInternetDialog(getActivity(), internetConnectionListener,
@@ -92,9 +131,9 @@ public class HomeFragment extends Fragment implements InternetConnectionListener
     }
 
     //! function for populate category list
-    private void initCategoryList() {
+    /*private void initCategoryList() {
 
-        /**
+        *//**
          * json is populating from text file. To make api call use ApiHandler class
          *
          *  <CODE>ApiHandler apiHandler = new ApiHandler(this, URL_GET_CATEGORY);</CODE> <BR>
@@ -102,7 +141,7 @@ public class HomeFragment extends Fragment implements InternetConnectionListener
          *
          * You will get the response in onSuccessResponse(String tag, String jsonString) method
          * if successful api call has done. Do the parsing as the following.
-         */
+         *//*
 
         String jsonString = loadJSONFromAsset(getActivity(), "get_category_id_list");
         try {
@@ -131,12 +170,12 @@ public class HomeFragment extends Fragment implements InternetConnectionListener
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @Override
     public void onConnectionEstablished(int code) {
         if (code == CATEGORY_ACTION) {
-            initCategoryList();
+            //initCategoryList();
         }
     }
 
@@ -159,7 +198,22 @@ public class HomeFragment extends Fragment implements InternetConnectionListener
 
     }
 
-    //! callback interface listen by HomeActivity to detect user click on category
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    //! callback interface listen by HomeActivity to detect ic_user click on category
     public static interface CategorySelectionCallbacks {
         void onCategorySelected(String catID, String title);
     }

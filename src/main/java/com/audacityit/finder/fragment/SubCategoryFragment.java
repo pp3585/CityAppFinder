@@ -152,7 +152,7 @@ public class SubCategoryFragment extends Fragment implements InternetConnectionL
 
     }
 
-    //! callback interface listen by HomeActivity to detect user click on sub-category
+    //! callback interface listen by HomeActivity to detect ic_user click on sub-category
     public static interface SubCategorySelectionCallbacks {
         void onSubCategorySelected(String subCatID, String title);
     }

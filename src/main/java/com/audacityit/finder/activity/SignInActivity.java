@@ -33,7 +33,7 @@ import static com.audacityit.finder.util.Validator.setPhoneCodeListener;
 /**
  * @author Audacity IT Solutions Ltd.
  * @class SignInActivity
- * @brief Responsible for making user logged in
+ * @brief Responsible for making ic_user logged in
  */
 
 public class SignInActivity extends Activity implements View.OnClickListener, View.OnTouchListener, InternetConnectionListener {
@@ -138,7 +138,7 @@ public class SignInActivity extends Activity implements View.OnClickListener, Vi
         user.setId("1"); //dummy
         user.setPhoneNumber(mobileNumber);
         user.setName("User"); // dummy value
-        user.setEmail("user@email.com");
+        user.setEmail("ic_user@email.com");
         savePreference(SignInActivity.this, JF_ID, user.getId());
         savePreference(SignInActivity.this, JF_CONTACT_NUMBER, user.getPhoneNumber());
         savePreference(SignInActivity.this, JF_NAME, user.getName());

@@ -41,7 +41,7 @@ import static com.audacityit.finder.util.Validator.setPhoneCodeListener;
 /**
  * @author Audacity IT Solutions Ltd.
  * @class SignUpActivity
- * @brief Responsible for creating new user
+ * @brief Responsible for creating new ic_user
  */
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener,

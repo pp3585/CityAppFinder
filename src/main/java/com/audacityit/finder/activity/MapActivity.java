@@ -45,7 +45,7 @@ import static com.audacityit.finder.util.UtilMethods.isUserSignedIn;
 /**
  * @author Audacity IT Solutions Ltd.
  * @class MapActivity
- * @brief Activity for showing user and business location with possible path to travel on map
+ * @brief Activity for showing ic_user and business location with possible path to travel on map
  */
 
 public class MapActivity extends FragmentActivity implements

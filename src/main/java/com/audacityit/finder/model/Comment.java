@@ -23,7 +23,7 @@ public class Comment {
      * @brief constructor with parameter
      * @param userName name of the commenter
      * @param rating rating point
-     * @param textComment user comment
+     * @param textComment ic_user comment
      * @param date date of comment
      */
     public Comment(String userName, float rating, String textComment, String date) {
@@ -34,7 +34,7 @@ public class Comment {
     }
 
     /**
-     * @brief get user name of the commenter
+     * @brief get ic_user name of the commenter
      * @return userName in String
      */
     public String getUserName() {
@@ -42,7 +42,7 @@ public class Comment {
     }
 
     /**
-     * @brief set user name of the commenter
+     * @brief set ic_user name of the commenter
      * @param userName in String
      */
     public void setUserName(String userName) {

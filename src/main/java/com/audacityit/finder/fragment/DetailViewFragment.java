@@ -67,7 +67,7 @@ import static com.audacityit.finder.util.UtilMethods.showNoInternetDialog;
 /**
  * @author Audacity IT Solutions Ltd.
  * @class DetailViewFragment
- * @brief Fragment for showing business in detail view with user comments, rating and gallery view
+ * @brief Fragment for showing business in detail view with ic_user comments, rating and gallery view
  */
 public class DetailViewFragment extends Fragment implements InternetConnectionListener {
 
@@ -294,7 +294,7 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
         if (itemDetails.getLatitude() != NULL_LOCATION && itemDetails.getLongitude() != NULL_LOCATION) {
             /** set APP_MAP_MODE to true to enable internet checking
             * because map needs internet connection
-            * to  show user and business location as well as their distance
+            * to  show ic_user and business location as well as their distance
             */
             APP_MAP_MODE = true;
             if (isConnectedToInternet(getActivity())) {
@@ -426,7 +426,7 @@ public class DetailViewFragment extends Fragment implements InternetConnectionLi
     }
 
     private void getUserComment(EditText etComment, CustomRatingBar ratingBar) {
-        //* make api call here to send user comment to server
+        //* make api call here to send ic_user comment to server
         Toast.makeText(getActivity(), MSG_RATING_SUCCESSFUL, Toast.LENGTH_SHORT).show();
         Collections.reverse(commentList);
         commentList.add(new Comment(getPreferenceString(getActivity(), JF_NAME),

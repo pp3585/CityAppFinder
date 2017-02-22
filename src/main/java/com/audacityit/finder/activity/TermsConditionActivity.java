@@ -13,7 +13,7 @@ import com.audacityit.finder.R;
 /**
  * @author Audacity IT Solutions Ltd.
  * @class TermsConditionActivity
- * @brief Activity for showing terms and condition to the user
+ * @brief Activity for showing terms and condition to the ic_user
  */
 
 public class TermsConditionActivity extends AppCompatActivity {

@@ -1,68 +1,33 @@
 package com.audacityit.finder.activity;
 
 
-import android.app.SearchManager;
-import android.app.SearchableInfo;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.ResultReceiver;
-import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
-import android.text.InputType;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.SearchView;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.audacityit.finder.R;
+import com.audacityit.finder.adapter.CustomViewPagerAdapter;
 import com.audacityit.finder.fragment.DetailViewFragment;
 import com.audacityit.finder.fragment.HomeFragment;
 import com.audacityit.finder.fragment.NavigationDrawerFragment;
 import com.audacityit.finder.fragment.ResultListFragment;
 import com.audacityit.finder.fragment.SubCategoryFragment;
-import com.audacityit.finder.model.District;
 import com.audacityit.finder.model.Item;
-import com.audacityit.finder.util.Constants;
-import com.audacityit.finder.util.UtilMethods;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.audacityit.finder.util.Constants.JF_AREA;
-import static com.audacityit.finder.util.Constants.JF_ENTRY;
-import static com.audacityit.finder.util.Constants.JF_ID;
-import static com.audacityit.finder.util.Constants.JF_TITLE;
-import static com.audacityit.finder.util.Constants.KEY_DISTRICT_2;
 import static com.audacityit.finder.util.Constants.isResultListFragmentOpened;
-import static com.audacityit.finder.util.UtilMethods.hideSoftKeyboard;
 import static com.audacityit.finder.util.UtilMethods.isDeviceCallSupported;
-import static com.audacityit.finder.util.UtilMethods.loadJSONFromAsset;
 import static com.audacityit.finder.util.UtilMethods.showHotLineCallDialog;
-import static com.audacityit.finder.util.UtilMethods.showSoftKeyboard;
 
 /**
  * @author Audacity IT Solutions Ltd.
@@ -73,45 +38,71 @@ import static com.audacityit.finder.util.UtilMethods.showSoftKeyboard;
 public class HomeActivity extends AppCompatActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks,
         HomeFragment.CategorySelectionCallbacks,
         SubCategoryFragment.SubCategorySelectionCallbacks,
-        ResultListFragment.ResultListCallbacks,
-        SearchView.OnQueryTextListener, AdapterView.OnItemClickListener {
+        ResultListFragment.ResultListCallbacks, /*AdapterView.OnItemClickListener*/ViewPager.OnPageChangeListener {
 
-    public static int selectedDistrictId = 1;
-    public static String selectedArea = "All Area";
+    /*public static int selectedDistrictId = 1;*/
+    /*public static String selectedArea = "All Area";*/
     private int navigationDepth = 0;
-    private SearchView mSearchView;
+    /*private SearchView mSearchView;
     private List<String> suggestions;
-    private String mCurrentSearchText;
-    private List<District> districtList;
-    private List<String> areaList;
+    private String mCurrentSearchText;*/
+    /*private List<District> districtList;*/
+    /*private List<String> areaList;*/
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private FragmentManager fragmentManager;
     private CharSequence mTitle;
     private String subCategoryTitle = null;
     private String resultListTitle = null;
     private String detailViewTitle = null;
-    private String searchQueryTitle = null;
+    /*private String searchQueryTitle = null;*/
     private boolean isPopupWindowNeedToUpdate = false;
-    private boolean isResultListNeedToUpdate = false;
+/*    private boolean isResultListNeedToUpdate = false;
     private RelativeLayout filterLayout;
     private Spinner spinnerDistrict;
     private Spinner spinnerArea;
     private TextView buttonApply;
-    private ListView suggestionListView;
+    private ListView suggestionListView;*/
+    /**************************/
+    private CustomViewPagerAdapter mViewPagerAdapter;
+    private ViewPager mViewPager;
+    /*************************/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarnew);
+        if(toolbar != null){
+            setSupportActionBar(toolbar);
+        }*/
+        /*SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());*/
 
+        /***Newly added code-Enhancements***/
+        // Create the adapter that will return a fragment for each of the two
+        // tabs of the activity.
+       /* mViewPagerAdapter = new CustomViewPagerAdapter(getSupportFragmentManager());
+        // Set up the ViewPager with the adapter.
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mViewPagerAdapter);
+        mViewPager.addOnPageChangeListener(this);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+
+        mViewPager.post(new Runnable() {
+            @Override
+            public void run() {
+                mViewPager.setCurrentItem(0);
+            }
+        });*/
+        /***********************************/
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
-        mSearchView = (SearchView) findViewById(R.id.searchView);
+        /*mSearchView = (SearchView) findViewById(R.id.searchView);
         mSearchView.setSearchableInfo(searchableInfo);
         mSearchView.setOnQueryTextListener(this);
         mSearchView.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
@@ -149,14 +140,27 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                 }
             }
         });
-        initSearchFilter();
+        initSearchFilter();*/
         onNavigationDrawerItemSelected(0);
     }
+
+    /********************Newly added code-Enhancements******************/
+
+    public void goToLogin(View view){
+        startActivity(new Intent(HomeActivity.this, SignInActivity.class));
+        finish();
+    }
+
+    public void onReferClicked(View view){
+        startActivity(new Intent(HomeActivity.this, PostBusinessActivity.class));
+    }
+
+    /*********************************************************/
 
     @Override
     public void onBackPressed() {
 
-        if (isSearchFilerShowing()) {
+        /*if (isSearchFilerShowing()) {
             findViewById(R.id.blankLayout).setVisibility(View.GONE);
             filterLayout.setVisibility(View.GONE);
             return;
@@ -165,7 +169,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
         if (mSearchView.getVisibility() == View.VISIBLE) {
             hideSearchView();
             return;
-        }
+        }*/
 
         switch (navigationDepth) {
             case 1:
@@ -241,25 +245,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
         }
     }
 
-    @Override
+    /*@Override
     protected void onNewIntent(Intent intent) {
         setIntent(intent);
         handleIntent(intent);
-    }
+    }*/
 
-    private void handleIntent(Intent intent) {
+    /*private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             mSearchView.setQuery(query, false);
             mSearchView.clearFocus();
         }
-    }
+    }*/
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        if (mSearchView.getVisibility() == View.VISIBLE) {
+        /*if (mSearchView.getVisibility() == View.VISIBLE) {
             hideSearchView();
-        }
+        }*/
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, HomeFragment.newInstance(position))
@@ -286,9 +290,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-            actionBar.setDisplayShowTitleEnabled(true);
+            /*actionBar.setLogo(R.drawable.ic_logo_promo);
+            actionBar.setDisplayUseLogoEnabled(true);*/
+
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayUseLogoEnabled(true);
+            actionBar.setLogo(R.drawable.ic_logo_promo);
+            actionBar.setDisplayShowTitleEnabled(false); //optional
+
             if (navigationDepth == 0)
-                actionBar.setTitle(getTitle());
+                //actionBar.setTitle(getTitle());
+            actionBar.setTitle("test");
             else if (navigationDepth == 1)
                 actionBar.setTitle(subCategoryTitle);
             else if (navigationDepth == 2)
@@ -296,17 +309,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
             else if (navigationDepth == 3)
                 actionBar.setTitle(detailViewTitle);
             else if (navigationDepth == 4)
-                actionBar.setTitle(searchQueryTitle);
+                actionBar.setTitle("");
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (isSearchFilerShowing()) {
+        /*if (isSearchFilerShowing()) {
             findViewById(R.id.blankLayout).setVisibility(View.GONE);
             filterLayout.setVisibility(View.GONE);
             return false;
-        }
+        }*/
 
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
             getMenuInflater().inflate(R.menu.menu, menu);
@@ -318,18 +331,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mSearchView.isFocused()) {
+        /*if (mSearchView.isFocused()) {
             mSearchView.setFocusable(false);
         }
-        hideSoftKeyboard(HomeActivity.this);
+        hideSoftKeyboard(HomeActivity.this);*/
         int id = item.getItemId();
         switch (id) {
             case R.id.action_search:
-                if (!isSearchFilerShowing() && !mNavigationDrawerFragment.isDrawerOpen())
-                    showHideSearchView();
+                /*if (!isSearchFilerShowing() && !mNavigationDrawerFragment.isDrawerOpen())
+                    showHideSearchView();*/
                 break;
             case R.id.action_call:
-                hideSearchView();
+                //hideSearchView();
                 if (isDeviceCallSupported(this)) {
                     showHotLineCallDialog(this, getResources().getString(R.string.hotline_call_heading),
                             getResources().getString(R.string.hotline_call_text),
@@ -340,22 +353,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
             case R.id.home:
                 return super.onOptionsItemSelected(item);
             case R.id.action_filter:
-                if (!mNavigationDrawerFragment.isDrawerOpen()) {
-                    hideSearchView();
+                /*if (!mNavigationDrawerFragment.isDrawerOpen()) {
+                    //hideSearchView();
                     if (isSearchFilerShowing()) {
                         findViewById(R.id.blankLayout).setVisibility(View.GONE);
                         filterLayout.setVisibility(View.GONE);
                     } else {
                         showSearchFilter();
                     }
-                }
+                }*/
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private void showHideSearchView() {
+    /*private void showHideSearchView() {
         if (mSearchView.getVisibility() == View.VISIBLE) {
             mSearchView.setFocusable(false);
             mSearchView.setVisibility(View.GONE);
@@ -367,24 +380,24 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
             mSearchView.requestFocus();
             showSoftKeyboard(this);
         }
-    }
+    }*/
 
-    private void hideSearchView() {
+    /*private void hideSearchView() {
         if (mSearchView.getVisibility() == View.VISIBLE) {
             mSearchView.setVisibility(View.GONE);
         }
         hideSuggestionList();
-    }
+    }*/
 
-    private void hideSuggestionList() {
+    /*private void hideSuggestionList() {
         if (suggestionListView != null && suggestionListView.getVisibility() == View.VISIBLE) {
             suggestionListView.setAdapter(null);
             suggestionListView.setVisibility(View.GONE);
         }
-    }
+    }*/
 
 
-    private void initSearchFilter() {
+    /*private void initSearchFilter() {
         filterLayout = (RelativeLayout) findViewById(R.id.filterLayout);
         spinnerDistrict = (Spinner) findViewById(R.id.spinnerDistrict);
         spinnerArea = (Spinner) findViewById(R.id.spinnerArea);
@@ -444,9 +457,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
             return true;
         else
             return false;
-    }
+    }*/
 
-    private void setAreaSpinner() {
+    /*private void setAreaSpinner() {
         if (areaList.size() > 0) {
             ArrayAdapter<String> areaAdapter = new ArrayAdapter(this, R.layout.list_item_spinner, areaList);
             areaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -464,12 +477,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                 }
             });
         }
-    }
+    }*/
 
 
     @Override
     public void onCategorySelected(String catID, String title) {
-        hideSearchView();
+        //hideSearchView();
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, SubCategoryFragment.newInstance(catID))
@@ -483,7 +496,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
 
     @Override
     public void onSubCategorySelected(String catID, String title) {
-        hideSearchView();
+        //hideSearchView();
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, ResultListFragment.newInstance(catID))
@@ -501,7 +514,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
         fragmentManager.beginTransaction()
                 .replace(R.id.container, DetailViewFragment.newInstance(itemDetails))
                 .commit();
-        hideSearchView();
+        //hideSearchView();
         navigationDepth++;
         if(getSupportActionBar() != null) {
             getSupportActionBar().setTitle(itemDetails.getTitle());
@@ -509,9 +522,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
         detailViewTitle = itemDetails.getTitle();
     }
 
-    @Override
+    /*@Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        hideSearchView();
+        //hideSearchView();
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, ResultListFragment.newInstance("", suggestions.get(position)))
@@ -521,9 +534,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
             getSupportActionBar().setTitle(suggestions.get(position));
         }
         searchQueryTitle = suggestions.get(position);
-    }
+    }*/
 
-    @Override
+    /*@Override
     public boolean onQueryTextSubmit(String query) {
         mSearchView.clearFocus();
         hideSearchView();
@@ -555,10 +568,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
             return true;
         }
         return false;
-    }
+    }*/
 
     // Search
-    private void showSuggestions() {
+    /*private void showSuggestions() {
         if (suggestions != null && suggestions.size() > 0 && !TextUtils.isEmpty(mCurrentSearchText)) {
             if (suggestionListView.getVisibility() == View.GONE) {
                 suggestionListView.setVisibility(View.VISIBLE);
@@ -593,9 +606,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
                 }
             });
         }
-    }
+    }*/
 
-    private void getSearchSuggestions(String query) {
+    /*private void getSearchSuggestions(String query) {
         String jsonString = loadJSONFromAsset(this, "get_suggestion_list");
         try {
             JSONArray jsonArray = new JSONArray(jsonString);
@@ -628,16 +641,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (districtList == null)
-            initDistrictFilter();
+        /*if (districtList == null)
+            initDistrictFilter();*/
     }
 
-    private void initDistrictFilter() {
+    /*private void initDistrictFilter() {
         String jsonString = loadJSONFromAsset(this, "get_district");
         try {
             final JSONArray jsonArray = new JSONArray(jsonString);
@@ -649,10 +662,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 
-    private void initArea(String id) {
+    /*private void initArea(String id) {
         String jsonString = loadJSONFromAsset(this, "get_area");
         try {
             JSONArray jsonArray = new JSONArray(jsonString);
@@ -675,11 +688,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationDrawerF
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return super.dispatchTouchEvent(ev);
     }
 
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
 }

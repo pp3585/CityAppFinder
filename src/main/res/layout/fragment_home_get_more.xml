@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:background="@drawable/app_blur_wallpaper">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/value_10dp"
+        android:paddingRight="@dimen/value_10dp"
+        android:paddingLeft="@dimen/value_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLabel1"
+            android:layout_alignParentTop="true"
+            android:text="@string/refer_to_friends_earn"
+            style="@style/GetMoreLabel"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rlCityConnect"
+            android:background="#ed5e17"
+            android:layout_toLeftOf="@+id/r2CenterShim"
+            android:layout_below="@id/tvLabel1"
+            android:layout_marginRight="@dimen/value_3dp"
+            style="@style/GetMoreButton">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgCityConnect"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/value_6dp"
+                android:src="@drawable/ic_connect"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvCityConnectTitle"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/city_connect"
+                style="@style/GetMoreText.Title"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tvCityConnectDesc"
+                android:layout_below="@+id/tvCityConnectTitle"
+                android:text="@string/city_connect_desc"
+                android:layout_marginTop="@dimen/value_10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentBottom="true"
+                style="@style/GetMoreText.Desc"/>
+
+            <Button
+                android:id="@+id/btnCityConnectMore"
+                style="@style/GetMoreReadMoreButton"
+                android:minHeight="0dp"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLabel2"
+            android:layout_below="@+id/rlCityConnect"
+            android:text="@string/citizen_corner"
+            style="@style/GetMoreLabel"/>
+
+        <View
+            android:id="@+id/r2CenterShim"
+            android:layout_height="match_parent"
+            android:layout_width="6dp"
+            android:visibility="invisible"
+            android:layout_below="@+id/tvLabel2"
+            android:layout_centerHorizontal="true"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/r2ReportIssue"
+            android:padding="@dimen/value_6dp"
+            android:background="#a38323"
+            android:layout_toLeftOf="@+id/r2CenterShim"
+            android:layout_below="@+id/tvLabel2"
+            style="@style/GetMoreButton">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgReportIssue"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/value_6dp"
+                android:src="@drawable/ic_error_outline_white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvReportIssueTitle"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/report_issue"
+                style="@style/GetMoreText.Title"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvReportIssueDesc"
+                android:layout_below="@+id/tvReportIssueTitle"
+                android:text="@string/report_issue_desc"
+                android:layout_marginTop="@dimen/value_5dp"
+                android:layout_centerVertical="true"
+                style="@style/GetMoreText.Desc"/>
+
+            <Button
+                android:id="@+id/btnReportIssueMore"
+                style="@style/GetMoreReadMoreButton"
+                android:minHeight="0dp"
+                android:minWidth="0dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/r2Helpline"
+            android:padding="@dimen/value_6dp"
+            android:background="#1f54af"
+            android:layout_toRightOf="@+id/r2CenterShim"
+            android:layout_below="@+id/tvLabel2"
+            style="@style/GetMoreButton">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgHelpline"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/value_6dp"
+                android:src="@drawable/ic_assistant"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHelplineTitle"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/helpline"
+                style="@style/GetMoreText.Title"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHelplineDesc"
+                android:layout_below="@+id/tvHelplineTitle"
+                android:text="@string/helpline_desc"
+                android:layout_marginTop="@dimen/value_5dp"
+                android:layout_centerVertical="true"
+                style="@style/GetMoreText.Desc"/>
+
+            <Button
+                android:id="@+id/btnHelplineMore"
+                style="@style/GetMoreReadMoreButton"
+                android:minHeight="0dp"
+                android:minWidth="0dp"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLabel3"
+            android:layout_below="@+id/r2ReportIssue"
+            android:text="@string/all_in_your_city"
+            style="@style/GetMoreLabel"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/r3Alerts"
+            android:padding="@dimen/value_6dp"
+            android:background="@color/green_color_3"
+            android:layout_toLeftOf="@+id/r2CenterShim"
+            android:layout_below="@+id/tvLabel3"
+            style="@style/GetMoreButton">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgAlerts"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/value_6dp"
+                android:src="@drawable/ic_alert"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvAlertsTitle"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/alerts"
+                style="@style/GetMoreText.Title"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvAlertsDesc"
+                android:layout_below="@+id/tvAlertsTitle"
+                android:text="@string/alerts_desc"
+                android:layout_marginTop="@dimen/value_5dp"
+                android:layout_centerVertical="true"
+                style="@style/GetMoreText.Desc"/>
+
+            <Button
+                android:id="@+id/btnAlertsMore"
+                style="@style/GetMoreReadMoreButton"
+                android:minHeight="0dp"
+                android:minWidth="0dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/r3Notices"
+            android:padding="@dimen/value_6dp"
+            android:background="@android:color/darker_gray"
+            android:layout_toRightOf="@+id/r2CenterShim"
+            android:layout_below="@+id/tvLabel3"
+            style="@style/GetMoreButton">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgNotices"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/value_6dp"
+                android:src="@drawable/ic_event_note"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvNoticesTitle"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/notices"
+                style="@style/GetMoreText.Title"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvNoticesDesc"
+                android:layout_below="@+id/tvNoticesTitle"
+                android:text="@string/notices_desc"
+                android:layout_marginTop="@dimen/value_5dp"
+                android:layout_centerVertical="true"
+                style="@style/GetMoreText.Desc"/>
+
+            <Button
+                android:id="@+id/btnNoticesMore"
+                style="@style/GetMoreReadMoreButton"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:textStyle="normal"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
+

@@ -35,7 +35,7 @@ public class NavigationAdapter extends BaseExpandableListAdapter {
         this.inflater = LayoutInflater.from(context);
 
         /*
-        * ! different options will be available based on user singed in/ signed out condition
+        * ! different options will be available based on ic_user singed in/ signed out condition
         * to change the options modify options, optionImages, optionImagesSelected array
         * optionImages and optionImagesSelected are the array of images to show on idle and
         * on selection mode.

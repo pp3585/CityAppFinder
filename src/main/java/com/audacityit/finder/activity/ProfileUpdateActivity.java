@@ -28,7 +28,7 @@ import static com.audacityit.finder.util.Validator.setPhoneCodeListener;
 /**
  * @author Audacity IT Solutions Ltd.
  * @class ProfileUpdateActivity
- * @brief Activity of updating user information
+ * @brief Activity of updating ic_user information
  */
 public class ProfileUpdateActivity extends Activity implements View.OnClickListener, InternetConnectionListener {
 

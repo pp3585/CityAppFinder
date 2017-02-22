@@ -198,7 +198,7 @@ public class ResultListFragment extends Fragment implements InternetConnectionLi
         }
     }
 
-    //! detect the location change by user from search filter on actionbar
+    //! detect the location change by ic_user from search filter on actionbar
     @Override
     public void onLocationChange() {
         if (UtilMethods.isConnectedToInternet(getActivity())) {
@@ -325,7 +325,7 @@ public class ResultListFragment extends Fragment implements InternetConnectionLi
         }
     }
 
-    // callback interface listen by HomeActivity to detect user click on business
+    // callback interface listen by HomeActivity to detect ic_user click on business
     public interface ResultListCallbacks {
         void onResultItemSelected(Item itemDetails);
     }

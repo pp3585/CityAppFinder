@@ -106,5 +106,28 @@
     <string name="dummy_web">www.cityappindia.in</string>
     <string name="dummy_email">cityappindia@gmail.com</string>
     <string name="click_to_enter">Click to enter</string>
+    <string name="utilities">UTILITIES</string>
+    <string name="city_administration">CITY\nADMINISTRATION</string>
+    <string name="services">SERVICES</string>
+    <string name="shop_amp_dine"><![CDATA[SHOP & DINE]]></string>
+    <string name="fun_amp_frolics"><![CDATA[FUN & FROLICS]]></string>
+    <string name="quickpay">TAP &amp; PAY</string>
+    <string name="welcome_guest">Welcome guest. Please&#160;</string>
+    <string name="refer_friends_and_earn_money">Refer friends and earn money.\nJoin <b>CITY-CONNECT</b></string>
+    <string name="city_connect">CITY CONNECT</string>
+    <string name="city_connect_desc">Add Your Business, Service, Place or Contact. Activate BHIM - Govt. of India Payment App - Get Rs.10.</string>
+    <string name="refer_to_friends_earn"><![CDATA[Refer to Friends & Earn]]></string>
+    <string name="report_issue">REPORT ISSUE</string>
+    <string name="report_issue_desc">Report Issue Text</string>
+    <string name="citizen_corner">Citizen Corner</string>
+    <string name="read_more">Read more</string>
+    <string name="helpline">HELPLINE</string>
+    <string name="helpline_desc">Helpline description text that is more than one line in length.</string>
+    <string name="all_in_your_city">All in Your City</string>
+    <string name="alerts">ALERTS</string>
+    <string name="alerts_desc">Some alerts related to city events will be displayed here.</string>
+    <string name="notices">NOTICES</string>
+    <string name="notices_desc">Notices description.</string>
+    <string name="login"><u>login</u>.</string>
 
 </resources>

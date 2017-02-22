@@ -37,7 +37,7 @@ import static com.audacityit.finder.util.Validator.isInputted;
 /**
  * @author Audacity IT Solutions Ltd.
  * @class VerificationActivity
- * @brief Activity for making user verified via sending code to the user mobile number
+ * @brief Activity for making ic_user verified via sending code to the ic_user mobile number
  */
 
 public class VerificationActivity extends Activity implements View.OnClickListener,

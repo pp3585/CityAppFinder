@@ -106,7 +106,7 @@ public class NavigationDrawerFragment extends Fragment {
         });
 
         /**
-         * if user is not logged in signInSignUpView will be visible
+         * if ic_user is not logged in signInSignUpView will be visible
          * to modify the layout go to res > layout > fragment_navigation_drawer
          */
         if (!isUserSignedIn(getActivity()))

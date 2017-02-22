@@ -23,7 +23,7 @@ import static com.audacityit.finder.util.Validator.isPasswordValid;
 /**
  * @author Audacity IT Solutions Ltd.
  * @class ChangePasswordActivity
- * @brief Activity for change user password
+ * @brief Activity for change ic_user password
  */
 
 public class ChangePasswordActivity extends Activity implements View.OnClickListener, View.OnTouchListener, InternetConnectionListener {

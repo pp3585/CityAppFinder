@@ -1,0 +1,159 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="@dimen/value_30dp"
+    android:paddingRight="@dimen/value_30dp"
+    android:paddingTop="@dimen/value_20dp"
+    android:paddingBottom="@dimen/value_20dp"
+    android:background="@drawable/app_blur_wallpaper"
+    tools:context="com.audacityit.finder.fragment.HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llWelcomeText"
+        android:orientation="vertical"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:id="@+id/llHome1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingBottom="@dimen/value_6dp">
+
+            <Button
+                android:id="@+id/btnCityAdmn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:layout_marginRight="@dimen/value_3dp"
+                android:text="@string/city_administration"
+                android:drawableTop="@drawable/ic_business_black"
+                style="@style/HomeButton"/>
+
+            <Button
+                android:id="@+id/btnUtilities"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:layout_marginLeft="@dimen/value_3dp"
+                android:text="@string/utilities"
+                android:drawableTop="@drawable/ic_administrative_tools"
+                style="@style/HomeButton"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llHome2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/llHome1"
+            android:layout_weight="1"
+            android:paddingBottom="@dimen/value_6dp">
+
+            <Button
+                android:id="@+id/btnServices"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:layout_marginRight="@dimen/value_3dp"
+                android:text="@string/services"
+                android:drawableTop="@drawable/ic_services_new"
+                style="@style/HomeButton"/>
+
+            <Button
+                android:id="@+id/btnShopDine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:layout_marginLeft="@dimen/value_3dp"
+                android:text="@string/shop_amp_dine"
+                android:drawableTop="@drawable/ic_restaurant_black"
+                style="@style/HomeButton"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llHome3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/llHome2"
+            android:layout_weight="1"
+            android:paddingBottom="@dimen/value_6dp">
+
+            <Button
+                android:id="@+id/btnFun"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:layout_marginRight="@dimen/value_3dp"
+                android:text="@string/fun_amp_frolics"
+                android:drawableTop="@drawable/ic_local_bar_black"
+                style="@style/HomeButton"/>
+
+            <Button
+                android:id="@+id/btnQuickPay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:layout_marginLeft="@dimen/value_3dp"
+                android:text="@string/quickpay"
+                android:drawableTop="@drawable/ic_rupee"
+                style="@style/HomeButton"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/llWelcomeText"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/btnRefer">
+
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:maxLines="2"
+            android:text="@string/welcome_guest"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/value_15sp"
+            android:textStyle="bold"
+            android:paddingTop="@dimen/value_15dp"
+            android:paddingBottom="@dimen/value_15dp"/>
+
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tvWelcome"
+            android:text="@string/login"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/value_15sp"
+            android:textStyle="bold"
+            android:paddingTop="@dimen/value_15dp"
+            android:paddingBottom="@dimen/value_15dp"
+            android:onClick="goToLogin"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnRefer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/refer_friends_and_earn_money"
+        android:drawableLeft="@android:drawable/btn_star"
+        style="@style/ReferButton"
+        android:onClick="onReferClicked"/>
+
+</RelativeLayout>
